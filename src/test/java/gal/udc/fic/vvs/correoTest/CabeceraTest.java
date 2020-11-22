@@ -36,7 +36,7 @@ public class CabeceraTest {
 		
 	}
 	
-	@Test
+	//@Test
 	public void cabeceraNoAñadidaSiNombreYValorSonVaciosTest() {
 		Cabecera cabeceraDePrueba = new Cabecera(mensaje, "", "");
 		
