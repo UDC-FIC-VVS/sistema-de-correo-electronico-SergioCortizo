@@ -16,6 +16,7 @@
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>1.7</maven.compiler.source>
     <maven.compiler.target>1.7</maven.compiler.target>
+    <junit-quickcheck.version>0.9.1</junit-quickcheck.version>
   </properties>
 
   <dependencies>
@@ -25,6 +26,18 @@
       <version>4.11</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+	    <groupId>com.pholser</groupId>
+	    <artifactId>junit-quickcheck-core</artifactId>
+	    <version>${junit-quickcheck.version}</version>
+	    <scope>test</scope>
+	</dependency>
+	<dependency>
+	    <groupId>com.pholser</groupId>
+	    <artifactId>junit-quickcheck-generators</artifactId>
+	    <version>${junit-quickcheck.version}</version>
+	    <scope>test</scope>
+	</dependency>
   </dependencies>
 
   <build>
