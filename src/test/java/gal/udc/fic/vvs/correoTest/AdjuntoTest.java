@@ -40,6 +40,14 @@ public class AdjuntoTest {
 				adjunto.obtenerVisualizacion());
 
 	}
+	
+	@Test
+	public void textoAdjuntoObtenerTamañoTest () {
+		Adjunto adjunto = new Adjunto(mensaje, texto);
+		
+		assertEquals(mensaje.obtenerVisualizacion() + "\n\nAdxunto: " + texto.obtenerPreVisualizacion(),
+				adjunto.obtenerVisualizacion());
+	}
 
 	@Test
 	public void audioAdjuntoIsWellFormed() {
