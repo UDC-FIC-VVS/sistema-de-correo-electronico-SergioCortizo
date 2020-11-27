@@ -18,6 +18,7 @@ import gal.udc.fic.vvs.email.correo.Mensaje;
 @RunWith(JUnitQuickcheck.class)
 public class LogPBT {
 
+	//TODO: Bug encontrado. El mensaje de log debería contener más información.
 	@Property
 	public void logTest_almacenarCorreo(@InRange(min = "1") int espacioArchivador,
 										@From(Ctor.class) Texto texto) {
