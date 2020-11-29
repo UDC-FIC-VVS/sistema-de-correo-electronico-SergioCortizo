@@ -30,5 +30,4 @@ public class DelegadoTest {
 		
 		assertEquals("archivadorPrueba", delegado.obtenerNombre());
 	}
-	
 }
