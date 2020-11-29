@@ -8,7 +8,6 @@ import org.junit.runner.RunWith;
 
 import com.pholser.junit.quickcheck.From;
 import com.pholser.junit.quickcheck.Property;
-import com.pholser.junit.quickcheck.generator.Ctor;
 import com.pholser.junit.quickcheck.generator.InRange;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
 
@@ -45,16 +44,17 @@ public class DelegadoPBT {
 	
 	@Property
 	public void DelegadoPBT_AlmacenarCorreo(@InRange(min = "1") int espacio,
-											@From(Ctor.class) Texto texto) {
+			@From(MyCharacterGenerator.class) String contenido) {
 		ArchivadorSimple archivador = new ArchivadorSimple("archivadorPrueba", espacio);
 		
 		Delegado delegado = new Delegado(archivador);
 		
 		delegado.establecerDelegado(archivador);
 		
-		Mensaje mensaje = new Mensaje(texto);
+		Mensaje mensaje = new Mensaje(new Texto("TextoPrueba", contenido));
 		
 		assertTrue(delegado.almacenarCorreo(mensaje));
+		assertEquals(espacio - mensaje.obtenerTamaño(), delegado.obtenerEspacioDisponible());
 	}
 	
 	@Property

@@ -1,5 +1,6 @@
 package gal.udc.fic.vvs.archivadorTest;
 
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.runner.RunWith;
@@ -26,5 +27,20 @@ public class LogPBT {
 		Mensaje mensaje = new Mensaje(texto);
 		
 		assertTrue(logTest.almacenarCorreo(mensaje));
+		assertEquals(espacioArchivador - mensaje.obtenerTamaño(), logTest.obtenerEspacioDisponible());
+	}
+	
+	@Property
+	public void logTest_obtenerEspacioTotal(@InRange(min = "1") int espacioArchivador) {
+		Log logTest = new Log(new ArchivadorSimple("archivadorPrueba", espacioArchivador));
+		
+		assertEquals(espacioArchivador, logTest.obtenerEspacioTotal());
+	}
+	
+	@Property
+	public void logTest_obtenerEspacioDisponible(@InRange(min = "1") int espacioArchivador) {
+		Log logTest = new Log(new ArchivadorSimple("archivadorPrueba", espacioArchivador));
+		
+		assertEquals(espacioArchivador, logTest.obtenerEspacioDisponible());
 	}
 }

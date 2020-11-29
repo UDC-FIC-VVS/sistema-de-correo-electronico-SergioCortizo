@@ -1,6 +1,7 @@
 package gal.udc.fic.vvs.email.archivador;
 
 import java.util.Vector;
+
 import gal.udc.fic.vvs.email.correo.Correo;
 
 public class ArchivadorSimple implements Archivador {

@@ -2,6 +2,7 @@ package gal.udc.fic.vvs.email.correo;
 
 import java.util.Collection;
 import java.util.Vector;
+
 import gal.udc.fic.vvs.email.archivo.Texto;
 
 public class Mensaje extends MensajeAbstracto {

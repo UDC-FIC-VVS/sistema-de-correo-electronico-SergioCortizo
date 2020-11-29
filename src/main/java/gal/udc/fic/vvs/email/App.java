@@ -1,9 +1,14 @@
 package gal.udc.fic.vvs.email;
 
-import gal.udc.fic.vvs.email.archivador.*;
-import gal.udc.fic.vvs.email.archivo.*;
-import gal.udc.fic.vvs.email.cliente.*;
-import gal.udc.fic.vvs.email.correo.*;
+import gal.udc.fic.vvs.email.archivador.ArchivadorSimple;
+import gal.udc.fic.vvs.email.archivo.Texto;
+import gal.udc.fic.vvs.email.cliente.Cliente;
+import gal.udc.fic.vvs.email.cliente.ClienteImp;
+import gal.udc.fic.vvs.email.correo.Cabecera;
+import gal.udc.fic.vvs.email.correo.Carpeta;
+import gal.udc.fic.vvs.email.correo.CarpetaLimitada;
+import gal.udc.fic.vvs.email.correo.Mensaje;
+import gal.udc.fic.vvs.email.correo.Reenvio;
 
 /**
  * Hello world!

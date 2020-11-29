@@ -1,7 +1,6 @@
 package gal.udc.fic.vvs.email.correo;
 
 import java.util.Collection;
-import java.util.Vector;
 
 public abstract class CorreoAbstracto implements Correo {
 

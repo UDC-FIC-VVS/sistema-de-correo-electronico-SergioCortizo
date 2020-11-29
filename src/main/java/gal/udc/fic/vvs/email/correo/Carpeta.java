@@ -1,7 +1,7 @@
 package gal.udc.fic.vvs.email.correo;
 
-import java.util.Vector;
 import java.util.Collection;
+import java.util.Vector;
 
 public class Carpeta extends CorreoAbstracto {
 

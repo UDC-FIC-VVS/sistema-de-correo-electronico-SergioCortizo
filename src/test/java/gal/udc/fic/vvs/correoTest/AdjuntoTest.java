@@ -1,25 +1,16 @@
 package gal.udc.fic.vvs.correoTest;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Rule;
 import org.junit.Test;
-
-import static org.junit.Assert.assertEquals;
 import org.junit.rules.ExpectedException;
 
-import java.util.Collection;
-import java.util.Vector;
-
-import gal.udc.fic.vvs.email.correo.Mensaje;
-import gal.udc.fic.vvs.email.correo.OperacionInvalida;
-import gal.udc.fic.vvs.email.correo.Reenvio;
-import gal.udc.fic.vvs.email.correo.Correo;
 import gal.udc.fic.vvs.email.archivo.Audio;
 import gal.udc.fic.vvs.email.archivo.Imagen;
 import gal.udc.fic.vvs.email.archivo.Texto;
 import gal.udc.fic.vvs.email.correo.Adjunto;
-import gal.udc.fic.vvs.email.correo.Cabecera;
-import gal.udc.fic.vvs.email.correo.Carpeta;
-import gal.udc.fic.vvs.email.correo.CarpetaLimitada;
+import gal.udc.fic.vvs.email.correo.Mensaje;
 
 public class AdjuntoTest {
 	@Rule

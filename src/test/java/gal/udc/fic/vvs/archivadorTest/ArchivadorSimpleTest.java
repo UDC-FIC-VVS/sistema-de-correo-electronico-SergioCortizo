@@ -1,10 +1,10 @@
 package gal.udc.fic.vvs.archivadorTest;
 
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
 
 import gal.udc.fic.vvs.email.archivador.ArchivadorSimple;
-
-import static org.junit.Assert.assertEquals;
 
 public class ArchivadorSimpleTest {
 
