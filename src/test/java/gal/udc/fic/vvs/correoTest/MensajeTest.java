@@ -10,6 +10,7 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import gal.udc.fic.vvs.email.archivo.Texto;
+import gal.udc.fic.vvs.email.correo.Carpeta;
 import gal.udc.fic.vvs.email.correo.Correo;
 import gal.udc.fic.vvs.email.correo.Mensaje;
 import gal.udc.fic.vvs.email.correo.OperacionInvalida;
@@ -116,6 +117,18 @@ public class MensajeTest {
 		Mensaje mensajeATestear = new Mensaje(texto);
 		
 		assertEquals(mensajeATestear.obtenerRuta(), mensajeATestear.obtenerPreVisualizacion());
+	}
+	
+	@Test
+	public void obtenerRutaWithPadreTest() throws OperacionInvalida {
+		Mensaje mensajeATestear = new Mensaje(texto);
+		
+		Carpeta carpetaPadre = new Carpeta("CarpetaPadre");
+		
+		carpetaPadre.añadir(mensajeATestear);
+		
+		assertEquals(carpetaPadre.obtenerPreVisualizacion() + " > " + mensajeATestear.obtenerPreVisualizacion(),
+				mensajeATestear.obtenerRuta());
 	}
 	
 	@Test
