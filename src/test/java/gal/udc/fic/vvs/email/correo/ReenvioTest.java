@@ -1,4 +1,4 @@
-package gal.udc.fic.vvs.correoTest;
+package gal.udc.fic.vvs.email.correo;
 
 import static org.junit.Assert.assertEquals;
 
