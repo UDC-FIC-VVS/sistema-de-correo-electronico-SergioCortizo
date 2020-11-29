@@ -534,4 +534,20 @@ public class CarpetaTest {
 		assertEquals(subcarpeta3, carpetaATestear.obtenerHijo(2));
 		assertEquals(subcarpeta4, carpetaATestear.obtenerHijo(3));
 	}
+	
+	@Test
+	public void cambiarCarpetaPadreDeCorreo() throws OperacionInvalida {
+		Carpeta carpetaATestear = new Carpeta(nombreCarpeta);
+		Carpeta carpetaPadre = new Carpeta(nombreCarpeta);
+		
+		Mensaje mensajePrueba = new Mensaje(texto);
+		
+		carpetaPadre.añadir(mensajePrueba);
+		
+		assertEquals(carpetaPadre, mensajePrueba.obtenerPadre());
+		
+		carpetaATestear.añadir(mensajePrueba);
+		
+		assertEquals(carpetaATestear, mensajePrueba.obtenerPadre());
+	}
 }
