@@ -12,12 +12,32 @@ public class AudioTest {
 	private final String previsualizacionAudio = nombreAudio + "(" + contenidoAudio.length() + " bytes, audio/ogg)";
 	
 	@Test
-	public void audioObjectIsWellGenerated() {
+	public void obtenerNombreTest() {
 		Audio textoATestear = new Audio(nombreAudio, contenidoAudio);
 		
 		assertEquals(nombreAudio, textoATestear.obtenerNombre());
+	}
+	
+	@Test
+	public void obtenerContenidoTest() {
+		Audio textoATestear = new Audio(nombreAudio, contenidoAudio);
+		
 		assertEquals(contenidoAudio, textoATestear.obtenerContenido());
+	}
+	
+	@Test
+	public void obtenerTamañoTest() {
+		Audio textoATestear = new Audio(nombreAudio, contenidoAudio);
+		
 		assertEquals(contenidoAudio.length(), textoATestear.obtenerTamaño());
+	}
+	
+	@Test
+	public void obtenerPreVisualizacionTest() {
+		Audio textoATestear = new Audio(nombreAudio, contenidoAudio);
+		
 		assertEquals(previsualizacionAudio, textoATestear.obtenerPreVisualizacion());
 	}
+	
+	
 }

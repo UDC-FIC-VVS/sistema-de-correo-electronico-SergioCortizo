@@ -12,12 +12,30 @@ public class TextoTest {
 	private final String previsualizacionTexto = nombreTexto + "(" + contenidoTexto.length() + " bytes, text/plain)";
 	
 	@Test
-	public void textoObjectIsWellGenerated() {
+	public void obtenerNombreTest() {
 		Texto textoATestear = new Texto(nombreTexto, contenidoTexto);
 		
 		assertEquals(nombreTexto, textoATestear.obtenerNombre());
+	}
+	
+	@Test
+	public void obtenerContenidoTest() {
+		Texto textoATestear = new Texto(nombreTexto, contenidoTexto);
+		
 		assertEquals(contenidoTexto, textoATestear.obtenerContenido());
+	}
+	
+	@Test
+	public void obtenerTamañoTest() {
+		Texto textoATestear = new Texto(nombreTexto, contenidoTexto);
+		
 		assertEquals(contenidoTexto.length(), textoATestear.obtenerTamaño());
+	}
+	
+	@Test
+	public void obtenerPreVisualizacionTest() {
+		Texto textoATestear = new Texto(nombreTexto, contenidoTexto);
+		
 		assertEquals(previsualizacionTexto, textoATestear.obtenerPreVisualizacion());
 	}
 }
