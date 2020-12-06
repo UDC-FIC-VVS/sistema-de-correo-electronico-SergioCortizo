@@ -10,24 +10,24 @@ import gal.udc.fic.vvs.email.correo.CarpetaLimitada;
 import gal.udc.fic.vvs.email.correo.Mensaje;
 import gal.udc.fic.vvs.email.correo.OperacionInvalida;
 
-public class CarpetaLimitadaGenerator extends Generator<CarpetaLimitada> {
-
-    public static final int TAMAÑO = 1000;
+public class CarpetaGenerator extends Generator<Carpeta> {
 	
-	public CarpetaLimitadaGenerator() {
-		super(CarpetaLimitada.class);
+    public static final int TAMAÑO = 1000;
+
+	protected CarpetaGenerator() {
+		super(Carpeta.class);
 	}
 
 	@Override
-	public CarpetaLimitada generate(SourceOfRandomness random, GenerationStatus status) {
-		Carpeta carpeta = new Carpeta("Carpeta limitada");
-		CarpetaLimitada carpetaLimitada = new CarpetaLimitada(carpeta, TAMAÑO);
+	public Carpeta generate(SourceOfRandomness random, GenerationStatus status) {
+		Carpeta carpeta = new Carpeta("Carpeta de prueba");
+
 		for (int i = 0; i < TAMAÑO; i++) {
 			try {
-				carpetaLimitada.añadir(new Mensaje(new Texto("Mensaje", "Mensaje de prueba " + i)));
+				carpeta.añadir(new Mensaje(new Texto("Mensaje", "Mensaje de prueba " + i)));
 			} catch (OperacionInvalida e) {}
 		}
-		return carpetaLimitada;
+		return carpeta;
 	}
 
 }
