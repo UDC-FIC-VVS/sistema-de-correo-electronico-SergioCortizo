@@ -1,4 +1,4 @@
-package gal.udc.fic.vvs.archivoTest;
+package gal.udc.fic.vvs.email.archivo;
 
 import static org.junit.Assert.assertEquals;
 
