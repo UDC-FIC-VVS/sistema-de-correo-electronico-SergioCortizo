@@ -61,6 +61,12 @@
 	    <version>0.14.1</version>
 	    <scope>test</scope>
 	</dependency>
+	<dependency>
+	    <groupId>com.tngtech.archunit</groupId>
+	    <artifactId>archunit-junit</artifactId>
+	    <version>0.8.3</version>
+	    <scope>test</scope>
+	</dependency>
   </dependencies>
 
   <build>
