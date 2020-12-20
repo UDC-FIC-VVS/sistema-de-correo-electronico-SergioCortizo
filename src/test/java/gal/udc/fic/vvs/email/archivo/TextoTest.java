@@ -2,8 +2,14 @@ package gal.udc.fic.vvs.email.archivo;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
+import etm.core.configuration.BasicEtmConfigurator;
+import etm.core.configuration.EtmManager;
+import etm.core.monitor.EtmMonitor;
+import etm.core.renderer.SimpleTextRenderer;
 import gal.udc.fic.vvs.email.archivo.Texto;
 
 /**
@@ -12,6 +18,21 @@ import gal.udc.fic.vvs.email.archivo.Texto;
  * @author Sergio Cortizo De Dios
  */
 public class TextoTest {
+	
+	private static EtmMonitor monitor;
+	
+	@BeforeClass
+	public final static void prepareMonitor() {
+		BasicEtmConfigurator.configure(true);
+	    monitor = EtmManager.getEtmMonitor();
+	    monitor.start();
+	}
+	
+	@AfterClass
+	public final static void stopMonitor() {
+		monitor.render(new SimpleTextRenderer());
+		monitor.stop();
+	}
 	
 	/**
 	 * Test para comprobar que el método obtenerNombre() funciona como se espera.

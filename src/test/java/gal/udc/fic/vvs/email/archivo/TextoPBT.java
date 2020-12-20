@@ -2,12 +2,20 @@ package gal.udc.fic.vvs.email.archivo;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.AfterClass;
+import org.junit.BeforeClass;
 import org.junit.runner.RunWith;
 
 import com.pholser.junit.quickcheck.From;
 import com.pholser.junit.quickcheck.Property;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
 
+import etm.core.configuration.BasicEtmConfigurator;
+import etm.core.configuration.EtmManager;
+import etm.core.monitor.EtmMonitor;
+import etm.core.monitor.EtmPoint;
+import etm.core.renderer.SimpleTextRenderer;
+import etm.core.timer.DefaultTimer;
 import gal.udc.fic.vvs.util.MyCharacterGenerator;
 
 /**
@@ -17,6 +25,20 @@ import gal.udc.fic.vvs.util.MyCharacterGenerator;
  */
 @RunWith(JUnitQuickcheck.class)
 public class TextoPBT {
+	
+	private static EtmMonitor monitor = EtmManager.getEtmMonitor();
+	
+	@BeforeClass
+	public final static void prepareMonitor() {
+		BasicEtmConfigurator.configure(true, new DefaultTimer());
+	    monitor.start();
+	}
+	
+	@AfterClass
+	public final static void stopMonitor() {
+		monitor.render(new SimpleTextRenderer());
+		monitor.stop();
+	}
 	
 	/**
 	 * Test para comprobar el método obtenerNombre() usando pruebas basadas en propiedades.
@@ -37,9 +59,11 @@ public class TextoPBT {
 	@Property
 	public void obtenerNombrePBT(@From(MyCharacterGenerator.class) String nombreTexto,
 			@From(MyCharacterGenerator.class) String contenidoTexto) {
+		
 		Texto textoATestear = new Texto(nombreTexto, contenidoTexto);
 		
 		assertEquals(nombreTexto, textoATestear.obtenerNombre());
+
 	}
 	
 	/**
@@ -64,6 +88,7 @@ public class TextoPBT {
 		Texto textoATestear = new Texto(nombreTexto, contenidoTexto);
 		
 		assertEquals(contenidoTexto, textoATestear.obtenerContenido());
+
 	}
 	
 	/**
@@ -89,6 +114,7 @@ public class TextoPBT {
 		Texto textoATestear = new Texto(nombreTexto, contenidoTexto);
 		
 		assertEquals(contenidoTexto.length(), textoATestear.obtenerTamaño());
+
 	}
 	
 	/**
@@ -120,5 +146,6 @@ public class TextoPBT {
 				nombreTexto + "(" + contenidoTexto.length() + " bytes, text/plain)";
 		
 		assertEquals(previsualizacionTexto, textoATestear.obtenerPreVisualizacion());
+	
 	}
 }
