@@ -67,6 +67,12 @@
 	    <version>0.8.3</version>
 	    <scope>test</scope>
 	</dependency>
+	<dependency>
+	  <groupId>org.pitest</groupId>
+	  <artifactId>pitest-maven</artifactId>
+	  <version>1.6.1</version>
+	  <type>maven-plugin</type>
+	</dependency>
   </dependencies>
 
   <build>
@@ -141,6 +147,25 @@
 		      		<version>4.2.0</version>
 		    	</dependency>
 		 	</dependencies>
+		</plugin>
+		<plugin>
+		    <groupId>org.pitest</groupId>
+		    <artifactId>pitest-maven</artifactId>
+		    <version>1.6.1</version>
+		    <configuration>
+		        <targetClasses>
+		            <param>gal.udc.fic.vvs.email.archivador.*</param>
+		            <param>gal.udc.fic.vvs.email.archivo.*</param>
+		            <param>gal.udc.fic.vvs.email.correo.*</param>
+		        </targetClasses>
+		        <targetTests>
+		            <param>gal.udc.fic.vvs.email.archivador.*</param>
+		            <param>gal.udc.fic.vvs.email.archivo.*</param>
+		            <param>gal.udc.fic.vvs.email.correo.*</param>
+		            <param>gal.udc.fic.vvs.archUnit.*</param>
+		            <param>gal.udc.fic.vvs.unit.*</param>
+		        </targetTests>
+		    </configuration>
 		</plugin>
     </plugins>
   </build>
