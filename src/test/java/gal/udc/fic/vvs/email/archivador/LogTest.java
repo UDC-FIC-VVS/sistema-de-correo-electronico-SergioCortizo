@@ -14,6 +14,9 @@ import gal.udc.fic.vvs.email.correo.Carpeta;
 import gal.udc.fic.vvs.email.correo.Mensaje;
 import gal.udc.fic.vvs.email.correo.OperacionInvalida;
 
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
 public class LogTest {
 	
 	@Test
@@ -87,5 +90,25 @@ public class LogTest {
 		boolean result = log.almacenarCorreo(carpeta);
 		
 		assertFalse(result);
+	}
+	
+	@Test
+	public void LogTest_almacenarCorreo_verifyPrintlnIsCalled () throws OperacionInvalida {
+		final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
+		
+		System.setOut(new PrintStream(outputStreamCaptor));
+		
+		ArchivadorSimple archivador = new ArchivadorSimple("archivadorPrueba", 1);
+		
+		ArchivadorSimple archivadorDelegado = new ArchivadorSimple("archivadorDelegado", 1);
+		
+		Log log = new Log(archivador);
+		
+		log.establecerDelegado(archivadorDelegado);
+		
+		log.almacenarCorreo(new Carpeta("carpeta"));
+		
+		assertEquals("Mensaxe de log", outputStreamCaptor.toString()
+			      .trim());
 	}
 }
