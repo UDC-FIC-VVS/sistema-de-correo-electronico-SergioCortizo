@@ -13,6 +13,7 @@ import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
 
 import gal.udc.fic.vvs.email.archivo.Texto;
 import gal.udc.fic.vvs.email.correo.Mensaje;
+import gal.udc.fic.vvs.util.MensajeGenerator;
 import gal.udc.fic.vvs.util.MyCharacterGenerator;
 
 /**
@@ -60,7 +61,7 @@ public class DelegadoPBT {
 	 * <p>
 	 * - Mecanismo de selección de datos: es una prueba basada en propiedades,
 	 *      por lo que se generan números enteros aleatorios para comprobar que pasando cualquier
-	 *      entero podemos asignarle espacio al archivador delegado (no se tiene en cuenta enteros positivos
+	 *      entero podemos asignarle espacio al archivador delegado (se tiene en cuenta enteros positivos
 	 *      y negativos para demostrar el bug sobre el espacio negativo mencionado anteriormente).
 	 *
 	 * @param espacio espacio a asignar
@@ -87,7 +88,7 @@ public class DelegadoPBT {
 	 * <p>
 	 * - Mecanismo de selección de datos: es una prueba basada en propiedades,
 	 *      por lo que se generan números enteros aleatorios para comprobar que pasando cualquier
-	 *      entero podemos asignarle espacio al archivador (no se tiene en cuenta enteros positivos
+	 *      entero podemos asignarle espacio al archivador (se tiene en cuenta enteros positivos
 	 *      o negativos para demostrar el bug sobre el espacio negativo mencionado anteriormente).
 	 *
 	 * @param espacio espacio a asignar
@@ -112,9 +113,9 @@ public class DelegadoPBT {
 	 *  	se espera que el correo se guarde correctamente.
 	 * <p>
 	 * - Mecanismo de selección de datos: es una prueba basada en propiedades,
-	 *      por lo que se usa la clase {@link MyCharacterGenerator} para generar
-	 *      cadenas aleatorias de contenido, asegurando que la propiedad se cumple
-	 *      sin influir el contenido que se está pasando.
+	 *      por lo que se usa la clase {@link MensajeGenerator} para generar
+	 *      mensajes, asegurando que la propiedad se cumple
+	 *      sin influir el tamaño del mensaje que se está pasando siempre y cuando haya espacio.
      * 
 	 * @param contenido contenido del correo
 	 * @param espacioArchivador espacio asignado al archivador.
@@ -122,14 +123,12 @@ public class DelegadoPBT {
 	 */
 	@Property
 	public void DelegadoPBT_AlmacenarCorreo(@InRange(min = "1") int espacio,
-			@From(MyCharacterGenerator.class) String contenido) {
+			@From(MensajeGenerator.class) Mensaje mensaje) {
 		ArchivadorSimple archivador = new ArchivadorSimple("archivadorPrueba", espacio);
 		
 		Delegado delegado = new Delegado(archivador);
 		
 		delegado.establecerDelegado(archivador);
-		
-		Mensaje mensaje = new Mensaje(new Texto("TextoPrueba", contenido));
 		
 		assertTrue(delegado.almacenarCorreo(mensaje));
 	}
@@ -143,9 +142,9 @@ public class DelegadoPBT {
 	 *  	se espera que el espacio disponible del archivador se haya disminuido.
 	 * <p>
 	 * - Mecanismo de selección de datos: es una prueba basada en propiedades,
-	 *      por lo que se usa la clase {@link MyCharacterGenerator} para generar
-	 *      cadenas aleatorias de contenido, asegurando que la propiedad se cumple
-	 *      sin influir el contenido que se está pasando.
+	 *      por lo que se usa la clase {@link MensajeGenerator} para generar
+	 *      mensajes, asegurando que la propiedad se cumple
+	 *      sin influir el tamaño del mensaje que se está pasando siempre y cuando haya espacio.
      * 
 	 * @param contenido contenido del correo
 	 * @param espacioArchivador espacio asignado al archivador.
@@ -153,14 +152,12 @@ public class DelegadoPBT {
 	 */
 	@Property
 	public void DelegadoPBT_AlmacenarCorreo_reducidoEspacioDisponible(@InRange(min = "1") int espacio,
-			@From(MyCharacterGenerator.class) String contenido) {
+			@From(MensajeGenerator.class) Mensaje mensaje) {
 		ArchivadorSimple archivador = new ArchivadorSimple("archivadorPrueba", espacio);
 		
 		Delegado delegado = new Delegado(archivador);
 		
 		delegado.establecerDelegado(archivador);
-		
-		Mensaje mensaje = new Mensaje(new Texto("TextoPrueba", contenido));
 		
 		delegado.almacenarCorreo(mensaje);
 		assertEquals(espacio - mensaje.obtenerTamaño(), delegado.obtenerEspacioDisponible());

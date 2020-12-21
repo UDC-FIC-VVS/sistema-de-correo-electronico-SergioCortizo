@@ -7,6 +7,11 @@ import org.junit.Test;
 import gal.udc.fic.vvs.email.archivador.ArchivadorSimple;
 import gal.udc.fic.vvs.email.archivador.Delegado;
 
+/**
+ * Clase para probar usando pruebas manuales los métodos de la clase {@link Delegado}.
+ * 
+ * @author Sergio Cortizo De Dios
+ */
 public class DelegadoTest {
 	
 	/**

@@ -1,35 +1,33 @@
 package gal.udc.fic.vvs.email.archivador;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertFalse;
-import static org.junit.Assert.assertTrue;
-
-import org.junit.Test;
-
-import gal.udc.fic.vvs.email.archivador.ArchivadorSimple;
-import gal.udc.fic.vvs.email.archivador.Delegado;
-import gal.udc.fic.vvs.email.archivador.Log;
-import gal.udc.fic.vvs.email.archivo.Texto;
-import gal.udc.fic.vvs.email.correo.Carpeta;
-import gal.udc.fic.vvs.email.correo.Mensaje;
-import gal.udc.fic.vvs.email.correo.OperacionInvalida;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 
+import org.junit.Test;
+
+import gal.udc.fic.vvs.email.correo.Carpeta;
+import gal.udc.fic.vvs.email.correo.OperacionInvalida;
+
+/**
+ * Clase para probar usando pruebas manuales los métodos de la clase {@link Log}.
+ * 
+ * @author Sergio Cortizo De Dios
+ */
 public class LogTest {
 	
-	@Test
-	public void LogTest_obtenerNombre () {
-		ArchivadorSimple archivador = new ArchivadorSimple("archivadorPrueba", 1);
-		
-		Log log = new Log(archivador);
-		
-		log.establecerDelegado(archivador);
-		
-		assertEquals("archivadorPrueba", log.obtenerNombre());
-	}
-	
+	/**
+	 * Test para comprobar que el método obtenerDelegado() funciona como se espera.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera devolver el archivador que se ha asignado como delegado.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve el archivador asignado como delegado.
+	 */
 	@Test
 	public void LogTest_obtenerDelegado () {
 		ArchivadorSimple archivador = new ArchivadorSimple("archivadorSimple", 1);
@@ -45,6 +43,18 @@ public class LogTest {
 		assertEquals(archivadorDelegado, log.obtenerDelegado());
 	}
 	
+	/**
+	 * Test para comprobar que el método obtenerDelegado() funciona como se espera.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	si el archivador del log es un {@link ArchivadorSimple}, nno se debería
+	 *  	establecer un delegado debido a la implementación de esta.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve el archivador asignado como delegado.
+	 */
 	@Test
 	public void LogTest_obtenerDelegadoConArchivadorSimple () {
 		ArchivadorSimple archivador = new ArchivadorSimple("archivadorPrueba", 1);
@@ -57,41 +67,18 @@ public class LogTest {
 		
 		assertEquals(null, log.obtenerDelegado());
 	}
-
-	@Test
-	public void LogTest_almacenarCorreo () {
-		ArchivadorSimple archivador = new ArchivadorSimple("archivadorPrueba", 1);
-		
-		ArchivadorSimple archivadorDelegado = new ArchivadorSimple("archivadorDelegado", 1);
-		
-		Log log = new Log(archivador);
-		
-		log.establecerDelegado(archivadorDelegado);
-		
-		boolean result = log.almacenarCorreo(new Carpeta("carpeta"));
-		
-		assertTrue(result);
-	}
 	
-	@Test
-	public void LogTest_almacenarCorreo_false () throws OperacionInvalida {
-		ArchivadorSimple archivador = new ArchivadorSimple("archivadorPrueba", 1);
-		
-		ArchivadorSimple archivadorDelegado = new ArchivadorSimple("archivadorDelegado", 1);
-		
-		Log log = new Log(archivador);
-		
-		log.establecerDelegado(archivadorDelegado);
-		
-		Carpeta carpeta = new Carpeta("carpeta");
-		
-		carpeta.añadir(new Mensaje(new Texto("mensaje", "mensaje")));
-		
-		boolean result = log.almacenarCorreo(carpeta);
-		
-		assertFalse(result);
-	}
-	
+	/**
+	 * Test para comprobar que al almacenar correo se imprime el mensaje de log.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera que se imprima el mensaje de log.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se imprime el mensaje de log al almacenar el correo.
+	 */
 	@Test
 	public void LogTest_almacenarCorreo_verifyPrintlnIsCalled () throws OperacionInvalida {
 		final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
