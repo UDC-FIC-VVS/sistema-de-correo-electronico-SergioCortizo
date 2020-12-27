@@ -42,32 +42,6 @@ public class CarpetaTest {
 		return carpetaATestear;
 	}
 
-	private Carpeta prepareCarpetaWithMensajesAndSubcarpetas() throws OperacionInvalida {
-		Carpeta carpetaATestear = prepareCarpetaWithMensajes();
-
-		for (int i = 1; i <= num_subcarpetas; i++) {
-			Carpeta carpeta = new Carpeta(nombreSubcarpeta);
-			for (int j = 1; j <= num_mensajes; j++) {
-				Mensaje mensaje = new Mensaje(texto);
-				carpeta.añadir(mensaje);
-			}
-			carpetaATestear.añadir(carpeta);
-		}
-
-		return carpetaATestear;
-	}
-
-	private Carpeta prepareCarpetaWithSubcarpetas() throws OperacionInvalida {
-		Carpeta carpetaATestear = new Carpeta(nombreCarpeta);
-
-		for (int i = 1; i <= num_subcarpetas; i++) {
-			Carpeta carpeta = new Carpeta(nombreSubcarpeta);
-			carpetaATestear.añadir(carpeta);
-		}
-
-		return carpetaATestear;
-	}
-
 	private Collection mensajesCollection() {
 		Collection coleccion = new Vector();
 
@@ -78,49 +52,65 @@ public class CarpetaTest {
 
 		return coleccion;
 	}
-
-	private Collection subcarpetasCollection() {
-		Collection coleccion = new Vector();
-
-		for (int i = 1; i <= num_subcarpetas; i++) {
-			Carpeta carpeta = new Carpeta(nombreCarpeta);
-			coleccion.add(carpeta);
-		}
-
-		return coleccion;
-	}
-
-	private Collection subcarpetasConMensajesCollection() throws OperacionInvalida {
-		Collection coleccion = new Vector();
-
-		for (int i = 1; i <= num_mensajes; i++) {
-			Mensaje mensaje = new Mensaje(texto);
-			coleccion.add(mensaje);
-		}
-
-		for (int i = 1; i <= num_subcarpetas; i++) {
-			Carpeta carpeta = new Carpeta(nombreSubcarpeta);
-			for (int j = 1; j <= num_mensajes; j++) {
-				Mensaje mensaje = new Mensaje(texto);
-				carpeta.añadir(mensaje);
-			}
-			coleccion.add(carpeta);
-		}
-
-		return coleccion;
-	}
-
+	
 	@Test
-	public void carpetaObjectWellCreated() throws OperacionInvalida {
+	public void carpetaObtenerNoLeidosTest_InitialState() throws OperacionInvalida {
 		Carpeta carpetaATestear = new Carpeta(nombreCarpeta);
 
 		assertEquals(0, carpetaATestear.obtenerNoLeidos());
+
+	}
+	
+	@Test
+	public void carpetaObtenerTamañoTest_InitialState() throws OperacionInvalida {
+		Carpeta carpetaATestear = new Carpeta(nombreCarpeta);
+		
 		assertEquals(0, carpetaATestear.obtenerTamaño());
+
+	}
+	
+	@Test
+	public void carpetaObtenerIconoTest() throws OperacionInvalida {
+		Carpeta carpetaATestear = new Carpeta(nombreCarpeta);
+
 		assertEquals(Correo.ICONO_CARPETA, carpetaATestear.obtenerIcono());
+
+	}
+	
+	@Test
+	public void carpetaObtenerVisualizacionTest_InitialState() throws OperacionInvalida {
+		Carpeta carpetaATestear = new Carpeta(nombreCarpeta);
+
 		assertEquals(nombreCarpeta, carpetaATestear.obtenerVisualizacion());
+
+	}
+	
+	@Test
+	public void carpetaObtenerPreVisualizacionTest_InitialState() throws OperacionInvalida {
+		Carpeta carpetaATestear = new Carpeta(nombreCarpeta);
+
 		assertEquals(nombreCarpeta, carpetaATestear.obtenerPreVisualizacion());
+
+	}
+	
+	@Test
+	public void carpetaExplorarTest_InitialState() throws OperacionInvalida {
+		Carpeta carpetaATestear = new Carpeta(nombreCarpeta);
+
 		assertEquals(new Vector(), carpetaATestear.explorar());
+	}
+	
+	@Test
+	public void carpetaBuscarTest_InitialState() throws OperacionInvalida {
+		Carpeta carpetaATestear = new Carpeta(nombreCarpeta);
+
 		assertEquals(new Vector(), carpetaATestear.buscar(""));
+
+	}
+	
+	@Test
+	public void carpetaObtenerHijosTest_InitialState() throws OperacionInvalida {
+		Carpeta carpetaATestear = new Carpeta(nombreCarpeta);
 
 		thrown.expect(ArrayIndexOutOfBoundsException.class);
 		carpetaATestear.obtenerHijo(0);
