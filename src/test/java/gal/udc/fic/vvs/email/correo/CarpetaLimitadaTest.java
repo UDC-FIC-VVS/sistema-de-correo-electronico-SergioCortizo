@@ -195,106 +195,6 @@ public class CarpetaLimitadaTest {
 	}
 	
 	@Test
-	public void eliminarMensajeDeCarpetaTest() throws OperacionInvalida {
-		Carpeta carpeta = new Carpeta(nombreCarpeta);
-
-		Mensaje mensaje = new Mensaje(texto);
-
-		carpeta.añadir(mensaje);
-		
-		CarpetaLimitada carpetaLimitadaATestear = new CarpetaLimitada(carpeta, tamaño);
-
-		assertEquals(mensaje, carpetaLimitadaATestear.obtenerHijo(0));
-
-		carpetaLimitadaATestear.eliminar(mensaje);
-
-		thrown.expect(ArrayIndexOutOfBoundsException.class);
-
-		carpetaLimitadaATestear.obtenerHijo(0);
-	}
-	
-	@Test
-	public void buscarHijoEnCarpetaWithMensajesTest() throws OperacionInvalida {
-		Carpeta carpeta = new Carpeta(nombreCarpeta);
-		
-		Mensaje mensaje1 = new Mensaje(new Texto("Mensaje 1", "Mensaje numero 1"));
-		carpeta.añadir(mensaje1);
-		
-		Mensaje mensaje2 = new Mensaje(new Texto("Mensaje 2", "Mensaje numero 2"));
-		carpeta.añadir(mensaje2);
-		
-		Mensaje mensaje3 = new Mensaje(new Texto("Mensaje 3", "Mensaje numero 3"));
-		carpeta.añadir(mensaje3);
-		
-		Mensaje mensaje4 = new Mensaje(new Texto("Mensaje 4", "Mensaje numero 4"));
-		carpeta.añadir(mensaje4);
-		
-		CarpetaLimitada carpetaLimitadaATestear = new CarpetaLimitada(carpeta, tamaño);
-		
-		assertEquals(mensaje1, carpetaLimitadaATestear.obtenerHijo(0));
-		assertEquals(mensaje2, carpetaLimitadaATestear.obtenerHijo(1));
-		assertEquals(mensaje3, carpetaLimitadaATestear.obtenerHijo(2));
-		assertEquals(mensaje4, carpetaLimitadaATestear.obtenerHijo(3));
-		
-	}
-	
-	@Test
-	public void buscarHijoEnCarpetaWithSubcarpetasVaciasTest() throws OperacionInvalida {
-		Carpeta carpeta = new Carpeta(nombreCarpeta);
-		
-		Carpeta subcarpeta1 = new Carpeta("Carpeta 1");
-		carpeta.añadir(subcarpeta1);
-		
-		Carpeta subcarpeta2 = new Carpeta("Carpeta 2");
-		carpeta.añadir(subcarpeta2);
-		
-		Carpeta subcarpeta3 = new Carpeta("Carpeta 3");
-		carpeta.añadir(subcarpeta3);
-		
-		Carpeta subcarpeta4 = new Carpeta("Carpeta 4");
-		carpeta.añadir(subcarpeta4);
-		
-		CarpetaLimitada carpetaLimitadaATestear = new CarpetaLimitada(carpeta, tamaño);
-		
-		assertEquals(subcarpeta1, carpetaLimitadaATestear.obtenerHijo(0));
-		assertEquals(subcarpeta2, carpetaLimitadaATestear.obtenerHijo(1));
-		assertEquals(subcarpeta3, carpetaLimitadaATestear.obtenerHijo(2));
-		assertEquals(subcarpeta4, carpetaLimitadaATestear.obtenerHijo(3));
-	}
-	
-	@Test
-	public void buscarHijoEnCarpetaWithSubcarpetasConMensajesTest() throws OperacionInvalida {
-		Carpeta carpeta = new Carpeta(nombreCarpeta);
-		
-		Carpeta subcarpeta1 = new Carpeta("Carpeta 1");
-		Mensaje mensaje1 = new Mensaje(new Texto("Mensaje 1", "Es el mensaje 1"));
-		subcarpeta1.añadir(mensaje1);
-		carpeta.añadir(subcarpeta1);
-		
-		Carpeta subcarpeta2 = new Carpeta("Carpeta 2");
-		Mensaje mensaje2 = new Mensaje(new Texto("Mensaje 2", "Es el mensaje 2"));
-		subcarpeta2.añadir(mensaje2);
-		carpeta.añadir(subcarpeta2);
-		
-		Carpeta subcarpeta3 = new Carpeta("Carpeta 3");
-		Mensaje mensaje3 = new Mensaje(new Texto("Mensaje 3", "Es el mensaje 3"));
-		subcarpeta3.añadir(mensaje3);
-		carpeta.añadir(subcarpeta3);
-		
-		Carpeta subcarpeta4 = new Carpeta("Carpeta 4");
-		Mensaje mensaje4 = new Mensaje(new Texto("Mensaje 4", "Es el mensaje 4"));
-		subcarpeta4.añadir(mensaje4);
-		carpeta.añadir(subcarpeta4);
-		
-		CarpetaLimitada carpetaLimitadaATestear = new CarpetaLimitada(carpeta, tamaño);
-		
-		assertEquals(subcarpeta1, carpetaLimitadaATestear.obtenerHijo(0));
-		assertEquals(subcarpeta2, carpetaLimitadaATestear.obtenerHijo(1));
-		assertEquals(subcarpeta3, carpetaLimitadaATestear.obtenerHijo(2));
-		assertEquals(subcarpeta4, carpetaLimitadaATestear.obtenerHijo(3));
-	}
-	
-	@Test
 	public void cambiarCarpetaPadreDeCorreo() throws OperacionInvalida {
 		Carpeta carpeta = new Carpeta(nombreCarpeta);
 		Carpeta carpetaPadre = new Carpeta(nombreCarpeta);
@@ -353,8 +253,7 @@ public class CarpetaLimitadaTest {
 		CarpetaLimitada carpetaLimitadaATestear = new CarpetaLimitada(carpeta, tamaño);
 		
 		Collection result = carpetaLimitadaATestear.buscar("Texto");
-		
-		//assertEquals(expectedCollection, result);
+
 		//TODO: En realidad CarpetaLimitada está devolviendo más objetos de los que debería, concretamente 1 de más
 		assertEquals(tamaño, carpetaLimitadaATestear.buscar("Texto").size());
 	}

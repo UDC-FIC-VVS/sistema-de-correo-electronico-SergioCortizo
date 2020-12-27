@@ -12,7 +12,7 @@ import gal.udc.fic.vvs.email.correo.OperacionInvalida;
 
 public class CarpetaLimitadaGenerator extends Generator<CarpetaLimitada> {
 
-    public static final int TAMAÑO = (int) (Math.random() * (100000 - 1)) + 1;
+    public static final int TAMAÑO = (int) (Math.random() * (1000 - 1)) + 1;
     public static final String nombreMensajes = "Mensaje";
     public static final String contenidoMensajes = "Mensaje de prueba ";
     

@@ -18,7 +18,7 @@ public class AudioGenerator extends Generator<Audio> {
     private static final String SPECIAL_CHARS = ".-\\;:_@[]^/|}{";
     private static final String ALL_MY_CHARS = LOWERCASE_CHARS
             + UPPERCASE_CHARS + NUMBERS + SPECIAL_CHARS;
-    public static final int CAPACITY = (int) (Math.random() * (100000 - 1)) + 1;
+    public static final int CAPACITY = (int) (Math.random() * (1000 - 1)) + 1;
 
 	@Override
 	public Audio generate(SourceOfRandomness random, GenerationStatus status) {

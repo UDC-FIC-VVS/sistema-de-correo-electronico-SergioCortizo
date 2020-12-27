@@ -1,6 +1,7 @@
 package gal.udc.fic.vvs.email.correo;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assume.assumeThat;
 
@@ -101,15 +102,31 @@ public class CarpetaLimitadaPBT {
 		assertTrue(carpeta.obtenerTamaño() > 0);
 	}
 	
-	/*@Property
+	@Property
 	public void eliminarMensajeDeCarpetaTest(
 			@From(CarpetaLimitadaGenerator.class) CarpetaLimitada carpeta) throws OperacionInvalida {
 
-		carpeta.eliminar(mensaje);
+		int numAleatorio = (int) (Math.random() * CarpetaLimitadaGenerator.TAMAÑO);
+		
+		Correo correoHijo = carpeta.obtenerHijo(numAleatorio);
+		
+		carpeta.eliminar(correoHijo);
+		
+		assertFalse(carpeta.explorar().contains(correoHijo));
+	}
 
-		thrown.expect(ArrayIndexOutOfBoundsException.class);
-
-		carpetaLimitadaATestear.obtenerHijo(0);
-	}*/
-
+	@Property
+	public void obtenerHijoEnCarpetaWithMensajesTest(
+			@From(CarpetaLimitadaGenerator.class) CarpetaLimitada carpeta) throws OperacionInvalida {
+		int hijoAleatorio =
+				(int) (Math.random() * CarpetaLimitadaGenerator.TAMAÑO);
+		
+		Mensaje mensajeEsperado = new Mensaje(
+				new Texto(CarpetaLimitadaGenerator.nombreMensajes,
+						CarpetaLimitadaGenerator.contenidoMensajes + hijoAleatorio));
+		
+		assertEquals(mensajeEsperado.obtenerVisualizacion(), 
+				carpeta.obtenerHijo(hijoAleatorio).obtenerVisualizacion());
+		
+	}
 }
