@@ -18,7 +18,7 @@ public class ImagenGenerator extends Generator<Imagen> {
     private static final String SPECIAL_CHARS = ".-\\;:_@[]^/|}{";
     private static final String ALL_MY_CHARS = LOWERCASE_CHARS
             + UPPERCASE_CHARS + NUMBERS + SPECIAL_CHARS;
-    public static final int CAPACITY = (int) Math.random() + 1;
+    public static final int CAPACITY = (int) (Math.random() * (100000 - 1)) + 1;
 
 	@Override
 	public Imagen generate(SourceOfRandomness random, GenerationStatus status) {

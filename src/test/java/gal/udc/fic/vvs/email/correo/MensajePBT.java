@@ -15,6 +15,6 @@ public class MensajePBT {
 
 	@Property
 	public void obtenerPrevisualizacion(@From(MensajeGenerator.class) Mensaje mensaje) {
-		assertTrue(mensaje.obtenerPreVisualizacion().length() <= 32);
+		assertTrue(mensaje.obtenerPreVisualizacion().length() <= 35);
 	}
 }

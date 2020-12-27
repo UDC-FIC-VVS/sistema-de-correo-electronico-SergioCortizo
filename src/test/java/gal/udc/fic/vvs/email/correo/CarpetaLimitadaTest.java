@@ -115,83 +115,6 @@ public class CarpetaLimitadaTest {
 	}
 	
 	@Test
-	public void buscarEnCarpetaLlenaConTamañoTopeTest() throws OperacionInvalida {
-		Carpeta carpeta = new Carpeta(nombreCarpeta);
-		Collection expectedCollection = new Vector();
-		
-		for (int i = 1; i <= tamaño; i++) {
-			Mensaje mensaje = new Mensaje(new Texto("Texto " + i, "Este es el texto " + i));
-			expectedCollection.add(mensaje);
-			carpeta.añadir(mensaje);
-		}
-		
-		CarpetaLimitada carpetaLimitadaATestear = new CarpetaLimitada(carpeta, tamaño);
-		
-		assertEquals(expectedCollection, carpetaLimitadaATestear.buscar("Texto"));
-		assertEquals(expectedCollection.size(), carpetaLimitadaATestear.buscar("Texto").size());
-		
-	}
-	
-	@Test
-	public void buscarEnCarpetaLlenaConTamañoMenorQueElTopeTest() throws OperacionInvalida {
-		Carpeta carpeta = new Carpeta(nombreCarpeta);
-		Collection expectedCollection = new Vector();
-		
-		for (int i = 1; i < tamaño; i++) {
-			Mensaje mensaje = new Mensaje(new Texto("Texto " + i, "Este es el texto " + i));
-			expectedCollection.add(mensaje);
-			carpeta.añadir(mensaje);
-		}
-		
-		CarpetaLimitada carpetaLimitadaATestear = new CarpetaLimitada(carpeta, tamaño);
-		
-		assertEquals(expectedCollection, carpetaLimitadaATestear.buscar("Texto"));
-		assertEquals(expectedCollection.size(), carpetaLimitadaATestear.buscar("Texto").size());
-	}
-	
-	@Test
-	public void establecerComoLeidoYNoLeidoTest() throws OperacionInvalida {
-		Carpeta carpeta = new Carpeta(nombreCarpeta);
-		Mensaje mensaje = new Mensaje(new Texto("TextoPrueba", "Este es un texto de prueba"));
-
-		carpeta.añadir(mensaje);
-		
-		CarpetaLimitada carpetaLimitadaATestear = new CarpetaLimitada(carpeta, tamaño);
-
-		carpetaLimitadaATestear.establecerLeido(true);
-
-		assertEquals(0, carpetaLimitadaATestear.obtenerNoLeidos());
-
-		carpetaLimitadaATestear.establecerLeido(false);
-
-		assertEquals(1, carpetaLimitadaATestear.obtenerNoLeidos());
-	}
-	
-	@Test
-	public void obtenerNoLeidosTest() throws OperacionInvalida {
-		Carpeta carpeta = new Carpeta(nombreCarpeta);
-		Mensaje mensaje = new Mensaje(texto);
-		
-		CarpetaLimitada carpetaLimitadaATestear = new CarpetaLimitada(carpeta, tamaño);
-
-		carpetaLimitadaATestear.añadir(mensaje);
-
-		assertEquals(1, carpetaLimitadaATestear.obtenerNoLeidos());
-	}
-
-	@Test
-	public void obtenerMultiplesNoLeidosTest() throws OperacionInvalida {
-		Carpeta carpeta = new Carpeta(nombreCarpeta);
-		Mensaje mensaje = new Mensaje(texto);
-		
-		CarpetaLimitada carpetaLimitadaATestear = new CarpetaLimitada(carpeta, tamaño);
-
-		carpetaLimitadaATestear.añadir(mensaje);
-
-		assertEquals(1, carpetaLimitadaATestear.obtenerNoLeidos());
-	}
-	
-	@Test
 	public void obtenerIcono() throws OperacionInvalida {
 		Carpeta carpeta = new Carpeta(nombreCarpeta);
 		Mensaje mensaje = new Mensaje(new Texto("TextoPrueba", "Este es un texto de prueba"));
@@ -204,54 +127,11 @@ public class CarpetaLimitadaTest {
 	}
 	
 	@Test
-	public void obtenerTamañoMensajesTest() throws OperacionInvalida {
-		Carpeta carpeta = prepareCarpetaWithMensajes();
-		CarpetaLimitada carpetaLimitadaATestear = new CarpetaLimitada(carpeta, tamaño);
-
-		assertEquals(num_mensajes * tamañoContenidoTexto, carpetaLimitadaATestear.obtenerTamaño());
-	}
-
-	@Test
-	public void obtenerTamañoSubcarpetasTest() throws OperacionInvalida {
-		Carpeta carpeta = prepareCarpetaWithSubcarpetas();
-		CarpetaLimitada carpetaLimitadaATestear = new CarpetaLimitada(carpeta, tamaño);
-
-		assertEquals(0, carpetaLimitadaATestear.obtenerTamaño());
-	}
-
-	@Test
-	public void obtenerTamañoMensajesAndSubcarpetasTest() throws OperacionInvalida {
-		Carpeta carpeta = prepareCarpetaWithMensajesAndSubcarpetas();
-		CarpetaLimitada carpetaLimitadaATestear = new CarpetaLimitada(carpeta, tamaño);
-
-		assertEquals((num_mensajes * tamañoContenidoTexto * num_subcarpetas) + num_mensajes * tamañoContenidoTexto,
-				carpetaLimitadaATestear.obtenerTamaño());
-	}
-	
-	@Test
 	public void obtenerVisualizacionMensajesTest() throws OperacionInvalida {
 		Carpeta carpeta = prepareCarpetaWithMensajes();
 		CarpetaLimitada carpetaLimitadaATestear = new CarpetaLimitada(carpeta, tamaño);
 
 		assertEquals(nombreCarpeta + " (" + num_mensajes + ")", carpetaLimitadaATestear.obtenerVisualizacion());
-	}
-
-	@Test
-	public void obtenerVisualizacionSubcarpetasTest() throws OperacionInvalida {
-		Carpeta carpeta = prepareCarpetaWithSubcarpetas();
-		CarpetaLimitada carpetaLimitadaATestear = new CarpetaLimitada(carpeta, tamaño);
-
-		assertEquals(nombreCarpeta, carpetaLimitadaATestear.obtenerVisualizacion());
-	}
-
-	@Test
-	public void obtenerVisualizacionMensajesAndSubcarpetasTest() throws OperacionInvalida {
-		Carpeta carpeta = prepareCarpetaWithMensajesAndSubcarpetas();
-		CarpetaLimitada carpetaLimitadaATestear = new CarpetaLimitada(carpeta, tamaño);
-
-		int num_noleidos = num_mensajes + (num_mensajes * num_subcarpetas);
-
-		assertEquals(nombreCarpeta + " (" + num_noleidos + ")", carpetaLimitadaATestear.obtenerVisualizacion());
 	}
 	
 	@Test
@@ -260,24 +140,6 @@ public class CarpetaLimitadaTest {
 		CarpetaLimitada carpetaLimitadaATestear = new CarpetaLimitada(carpeta, tamaño);
 
 		assertEquals(nombreCarpeta + " (" + num_mensajes + ")", carpetaLimitadaATestear.obtenerPreVisualizacion());
-	}
-
-	@Test
-	public void obtenerPreVisualizacionSubcarpetasTest() throws OperacionInvalida {
-		Carpeta carpeta = prepareCarpetaWithSubcarpetas();
-		CarpetaLimitada carpetaLimitadaATestear = new CarpetaLimitada(carpeta, tamaño);
-
-		assertEquals(nombreCarpeta, carpetaLimitadaATestear.obtenerPreVisualizacion());
-	}
-
-	@Test
-	public void obtenerPreVisualizacionMensajesAndSubcarpetasTest() throws OperacionInvalida {
-		Carpeta carpeta = prepareCarpetaWithMensajesAndSubcarpetas();
-		CarpetaLimitada carpetaLimitadaATestear = new CarpetaLimitada(carpeta, tamaño);
-
-		int num_noleidos = num_mensajes + (num_mensajes * num_subcarpetas);
-
-		assertEquals(nombreCarpeta + " (" + num_noleidos + ")", carpetaLimitadaATestear.obtenerPreVisualizacion());
 	}
 	
 	@Test
@@ -289,36 +151,6 @@ public class CarpetaLimitadaTest {
 
 		for (Correo mensaje : expectedHijos) {
 			carpetaLimitadaATestear.añadir(mensaje);
-		}
-
-		assertEquals(expectedHijos, carpetaLimitadaATestear.explorar());
-
-	}
-
-	@Test
-	public void explorarCarpetaWithSubcarpetasTest() throws OperacionInvalida {
-		Carpeta carpeta = new Carpeta(nombreCarpeta);
-		CarpetaLimitada carpetaLimitadaATestear = new CarpetaLimitada(carpeta, tamaño);
-
-		Collection<Correo> expectedHijos = subcarpetasCollection();
-
-		for (Correo c : expectedHijos) {
-			carpetaLimitadaATestear.añadir(c);
-		}
-
-		assertEquals(expectedHijos, carpetaLimitadaATestear.explorar());
-
-	}
-
-	@Test
-	public void explorarCarpetaWithSubcarpetasAndMensajesTest() throws OperacionInvalida {
-		Carpeta carpeta = new Carpeta(nombreCarpeta);
-		CarpetaLimitada carpetaLimitadaATestear = new CarpetaLimitada(carpeta, tamaño);
-
-		Collection<Correo> expectedHijos = subcarpetasConMensajesCollection();
-
-		for (Correo c : expectedHijos) {
-			carpetaLimitadaATestear.añadir(c);
 		}
 
 		assertEquals(expectedHijos, carpetaLimitadaATestear.explorar());
@@ -375,48 +207,6 @@ public class CarpetaLimitadaTest {
 		assertEquals(mensaje, carpetaLimitadaATestear.obtenerHijo(0));
 
 		carpetaLimitadaATestear.eliminar(mensaje);
-
-		thrown.expect(ArrayIndexOutOfBoundsException.class);
-
-		carpetaLimitadaATestear.obtenerHijo(0);
-	}
-
-	@Test
-	public void eliminarSubcarpetaVaciaDeCarpetaTest() throws OperacionInvalida {
-		Carpeta carpeta = new Carpeta(nombreCarpeta);
-
-		Carpeta subcarpeta = new Carpeta("subcarpeta");
-
-		carpeta.añadir(subcarpeta);
-		
-		CarpetaLimitada carpetaLimitadaATestear = new CarpetaLimitada(carpeta, tamaño);
-
-		assertEquals(subcarpeta, carpetaLimitadaATestear.obtenerHijo(0));
-
-		carpetaLimitadaATestear.eliminar(subcarpeta);
-
-		thrown.expect(ArrayIndexOutOfBoundsException.class);
-
-		carpetaLimitadaATestear.obtenerHijo(0);
-	}
-
-	@Test
-	public void eliminarSubcarpetaConMensajeDeCarpetaTest() throws OperacionInvalida {
-		Carpeta carpeta = new Carpeta(nombreCarpeta);
-
-		Carpeta subcarpeta = new Carpeta("subcarpeta");
-
-		Mensaje mensaje = new Mensaje(texto);
-
-		subcarpeta.añadir(mensaje);
-
-		carpeta.añadir(subcarpeta);
-		
-		CarpetaLimitada carpetaLimitadaATestear = new CarpetaLimitada(carpeta, tamaño);
-
-		assertEquals(subcarpeta, carpetaLimitadaATestear.obtenerHijo(0));
-
-		carpetaLimitadaATestear.eliminar(subcarpeta);
 
 		thrown.expect(ArrayIndexOutOfBoundsException.class);
 

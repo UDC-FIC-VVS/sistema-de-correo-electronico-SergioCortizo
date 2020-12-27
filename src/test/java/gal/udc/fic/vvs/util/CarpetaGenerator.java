@@ -12,7 +12,7 @@ import gal.udc.fic.vvs.email.correo.OperacionInvalida;
 
 public class CarpetaGenerator extends Generator<Carpeta> {
 	
-    public static final int TAMAÑO = 1000;
+    public static final int TAMAÑO = (int) (Math.random() * (100000 - 1)) + 1;
 
 	protected CarpetaGenerator() {
 		super(Carpeta.class);
