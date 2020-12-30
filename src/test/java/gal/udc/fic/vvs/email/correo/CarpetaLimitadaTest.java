@@ -1,6 +1,7 @@
 package gal.udc.fic.vvs.email.correo;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
 import java.util.Collection;
 import java.util.Vector;
@@ -10,12 +11,12 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import gal.udc.fic.vvs.email.archivo.Texto;
-import gal.udc.fic.vvs.email.correo.Carpeta;
-import gal.udc.fic.vvs.email.correo.CarpetaLimitada;
-import gal.udc.fic.vvs.email.correo.Correo;
-import gal.udc.fic.vvs.email.correo.Mensaje;
-import gal.udc.fic.vvs.email.correo.OperacionInvalida;
 
+/**
+ * Clase para probar manualmente los métodos de la clase {@link CarpetaLimitada}.
+ * 
+ * @author Sergio Cortizo De Dios
+ */
 public class CarpetaLimitadaTest {
 
 	@Rule
@@ -46,32 +47,6 @@ public class CarpetaLimitadaTest {
 		return carpetaATestear;
 	}
 
-	private Carpeta prepareCarpetaWithMensajesAndSubcarpetas() throws OperacionInvalida {
-		Carpeta carpetaATestear = prepareCarpetaWithMensajes();
-
-		for (int i = 1; i <= num_subcarpetas; i++) {
-			Carpeta carpeta = new Carpeta(nombreSubcarpeta);
-			for (int j = 1; j <= num_mensajes; j++) {
-				Mensaje mensaje = new Mensaje(texto);
-				carpeta.añadir(mensaje);
-			}
-			carpetaATestear.añadir(carpeta);
-		}
-
-		return carpetaATestear;
-	}
-
-	private Carpeta prepareCarpetaWithSubcarpetas() throws OperacionInvalida {
-		Carpeta carpetaATestear = new Carpeta(nombreCarpeta);
-
-		for (int i = 1; i <= num_subcarpetas; i++) {
-			Carpeta carpeta = new Carpeta(nombreSubcarpeta);
-			carpetaATestear.añadir(carpeta);
-		}
-
-		return carpetaATestear;
-	}
-
 	private Collection mensajesCollection() {
 		Collection coleccion = new Vector();
 
@@ -82,38 +57,18 @@ public class CarpetaLimitadaTest {
 
 		return coleccion;
 	}
-
-	private Collection subcarpetasCollection() {
-		Collection coleccion = new Vector();
-
-		for (int i = 1; i <= num_subcarpetas; i++) {
-			Carpeta carpeta = new Carpeta(nombreCarpeta);
-			coleccion.add(carpeta);
-		}
-
-		return coleccion;
-	}
-
-	private Collection subcarpetasConMensajesCollection() throws OperacionInvalida {
-		Collection coleccion = new Vector();
-
-		for (int i = 1; i <= num_mensajes; i++) {
-			Mensaje mensaje = new Mensaje(texto);
-			coleccion.add(mensaje);
-		}
-
-		for (int i = 1; i <= num_subcarpetas; i++) {
-			Carpeta carpeta = new Carpeta(nombreSubcarpeta);
-			for (int j = 1; j <= num_mensajes; j++) {
-				Mensaje mensaje = new Mensaje(texto);
-				carpeta.añadir(mensaje);
-			}
-			coleccion.add(carpeta);
-		}
-
-		return coleccion;
-	}
 	
+	/**
+	 * Test para comprobar que el método obtenerIcono() funciona como se espera.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera devolver el icono de carpeta.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve lo mencionado anteriormente.
+	 */
 	@Test
 	public void obtenerIcono() throws OperacionInvalida {
 		Carpeta carpeta = new Carpeta(nombreCarpeta);
@@ -126,6 +81,18 @@ public class CarpetaLimitadaTest {
 		assertEquals(Correo.ICONO_CARPETA, carpetaLimitadaATestear.obtenerIcono());
 	}
 	
+	/**
+	 * Test para comprobar que el método obtenerVisualizacion() funciona como se espera.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera devolver la visualización de la carpeta con el nº de mensajes
+	 *  	nuevos con la sintaxis esperada.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve lo mencionado anteriormente.
+	 */
 	@Test
 	public void obtenerVisualizacionMensajesTest() throws OperacionInvalida {
 		Carpeta carpeta = prepareCarpetaWithMensajes();
@@ -134,6 +101,18 @@ public class CarpetaLimitadaTest {
 		assertEquals(nombreCarpeta + " (" + num_mensajes + ")", carpetaLimitadaATestear.obtenerVisualizacion());
 	}
 	
+	/**
+	 * Test para comprobar que el método obtenerPreVisualizacion() funciona como se espera.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera devolver la previsualización de la carpeta con el nº de mensajes
+	 *  	nuevos con la sintaxis esperada.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve lo mencionado anteriormente.
+	 */
 	@Test
 	public void obtenerPreVisualizacionMensajesTest() throws OperacionInvalida {
 		Carpeta carpeta = prepareCarpetaWithMensajes();
@@ -142,6 +121,17 @@ public class CarpetaLimitadaTest {
 		assertEquals(nombreCarpeta + " (" + num_mensajes + ")", carpetaLimitadaATestear.obtenerPreVisualizacion());
 	}
 	
+	/**
+	 * Test para comprobar que el método explorar() funciona como se espera.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera devolver el contenido existente dentro de la carpeta.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve lo mencionado anteriormente.
+	 */
 	@Test
 	public void explorarCarpetaWithMensajesTest() throws OperacionInvalida {
 		Carpeta carpeta = new Carpeta(nombreCarpeta);
@@ -157,6 +147,19 @@ public class CarpetaLimitadaTest {
 
 	}
 	
+	/**
+	 * Test para comprobar que el método buscar() funciona como se espera
+	 * en distintas situaciones de búsqueda.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera devolver los resultados indicados dependiendo de la búsqueda
+	 *  	que se esté haciendo.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve lo mencionado anteriormente.
+	 */
 	@Test
 	public void buscarEnCarpetaWithMensajesTest() throws OperacionInvalida {
 		Carpeta carpeta = new Carpeta(nombreCarpeta);
@@ -194,6 +197,17 @@ public class CarpetaLimitadaTest {
 
 	}
 	
+	/**
+	 * Test para comprobar que la carpeta padre del mensaje se cambia correctamente.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera que la carpeta padre del mensaje se cambie correctamente.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve lo mencionado anteriormente.
+	 */
 	@Test
 	public void cambiarCarpetaPadreDeCorreo() throws OperacionInvalida {
 		Carpeta carpeta = new Carpeta(nombreCarpeta);
@@ -212,6 +226,18 @@ public class CarpetaLimitadaTest {
 		assertEquals(carpeta, mensajePrueba.obtenerPadre());
 	}
 	
+	/**
+	 * Test para comprobar que el método obtenerRuta() funciona como se espera.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera devolver la ruta de la clase sin la carpeta padre
+	 *  	con la sintaxis esperada.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve lo mencionado anteriormente.
+	 */
 	@Test
 	public void obtenerRutaWithoutPadreTest() {
 		Carpeta carpeta = new Carpeta(nombreCarpeta);
@@ -221,6 +247,18 @@ public class CarpetaLimitadaTest {
 		assertEquals(carpetaLimitadaATestear.obtenerRuta(), carpetaLimitadaATestear.obtenerPreVisualizacion());
 	}
 	
+	/**
+	 * Test para comprobar que el método obtenerRuta() funciona como se espera.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera devolver la ruta de la clase con la carpeta padre
+	 *  	con la sintaxis esperada.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve lo mencionado anteriormente.
+	 */
 	@Test
 	public void obtenerRutaWithPadreTest() throws OperacionInvalida {
 		Carpeta carpeta = new Carpeta(nombreCarpeta);
@@ -234,7 +272,19 @@ public class CarpetaLimitadaTest {
 				carpetaLimitadaATestear.obtenerRuta());
 	}
 	
-	//@Test
+	/**
+	 * Test para exponer un error encontrado en el método buscar()
+	 * donde al realizar la búsqueda el tamaño de la colección sobrepasa al tamaño límite.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra negativa,
+	 *  	se espera demostrar el fallo mencionado anteriormente.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve lo mencionado anteriormente.
+	 */
+	@Test
 	public void buscarEnCarpetaLlenaConTamañoMayorQueElTopeTest() throws OperacionInvalida {
 		Carpeta carpeta = new Carpeta(nombreCarpeta);
 		Collection expectedCollection = new Vector();
@@ -255,6 +305,6 @@ public class CarpetaLimitadaTest {
 		Collection result = carpetaLimitadaATestear.buscar("Texto");
 
 		//TODO: En realidad CarpetaLimitada está devolviendo más objetos de los que debería, concretamente 1 de más
-		assertEquals(tamaño, carpetaLimitadaATestear.buscar("Texto").size());
+		assertTrue(tamaño < carpetaLimitadaATestear.buscar("Texto").size());
 	}
 }

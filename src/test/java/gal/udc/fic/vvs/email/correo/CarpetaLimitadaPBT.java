@@ -3,23 +3,24 @@ package gal.udc.fic.vvs.email.correo;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.junit.Assume.assumeThat;
 
 import java.util.Collection;
 import java.util.Vector;
 
-import org.hamcrest.Matchers;
-import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.pholser.junit.quickcheck.From;
 import com.pholser.junit.quickcheck.Property;
-import com.pholser.junit.quickcheck.generator.java.util.CollectionGenerator;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
 
 import gal.udc.fic.vvs.email.archivo.Texto;
 import gal.udc.fic.vvs.util.CarpetaLimitadaGenerator;
 
+/**
+ * Clase para probar usando PBT los métodos de la clase {@link CarpetaLimitada}.
+ * 
+ * @author Sergio Cortizo De Dios
+ */
 @RunWith(JUnitQuickcheck.class)
 public class CarpetaLimitadaPBT {
 	

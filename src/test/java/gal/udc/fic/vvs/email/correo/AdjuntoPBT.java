@@ -2,7 +2,6 @@ package gal.udc.fic.vvs.email.correo;
 
 import static org.junit.Assert.assertEquals;
 
-import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.pholser.junit.quickcheck.From;
@@ -17,6 +16,11 @@ import gal.udc.fic.vvs.util.ImagenGenerator;
 import gal.udc.fic.vvs.util.MensajeGenerator;
 import gal.udc.fic.vvs.util.TextoGenerator;
 
+/**
+ * Clase para probar usando PBT los métodos de la clase {@link Adjunto}.
+ * 
+ * @author Sergio Cortizo De Dios
+ */
 @RunWith(JUnitQuickcheck.class)
 public class AdjuntoPBT {
 

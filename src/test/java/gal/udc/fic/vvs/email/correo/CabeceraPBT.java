@@ -11,6 +11,11 @@ import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
 
 import gal.udc.fic.vvs.util.MensajeGenerator;
 
+/**
+ * Clase para probar usando PBT los métodos de la clase {@link Cabecera}.
+ * 
+ * @author Sergio Cortizo De Dios
+ */
 @RunWith(JUnitQuickcheck.class)
 public class CabeceraPBT {
 	

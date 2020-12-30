@@ -16,6 +16,11 @@ import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
 import gal.udc.fic.vvs.email.archivo.Texto;
 import gal.udc.fic.vvs.util.CarpetaGenerator;
 
+/**
+ * Clase para probar usando PBT los métodos de la clase {@link Carpeta}.
+ * 
+ * @author Sergio Cortizo De Dios
+ */
 @RunWith(JUnitQuickcheck.class)
 public class CarpetaPBT {
 	

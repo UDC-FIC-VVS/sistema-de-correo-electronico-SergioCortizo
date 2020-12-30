@@ -13,6 +13,11 @@ import gal.udc.fic.vvs.email.archivo.Texto;
 import gal.udc.fic.vvs.util.MensajeGenerator;
 import gal.udc.fic.vvs.util.TextoGenerator;
 
+/**
+ * Clase para probar usando PBT los métodos de la clase {@link Mensaje}.
+ * 
+ * @author Sergio Cortizo De Dios
+ */
 @RunWith(JUnitQuickcheck.class)
 public class MensajePBT {
 

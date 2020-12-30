@@ -10,11 +10,12 @@ import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
 import gal.udc.fic.vvs.email.archivo.Texto;
-import gal.udc.fic.vvs.email.correo.Carpeta;
-import gal.udc.fic.vvs.email.correo.Correo;
-import gal.udc.fic.vvs.email.correo.Mensaje;
-import gal.udc.fic.vvs.email.correo.OperacionInvalida;
 
+/**
+ * Clase para probar manualmente los métodos de la clase {@link Carpeta}.
+ * 
+ * @author Sergio Cortizo De Dios
+ */
 public class CarpetaTest {
 	private final String nombreCarpeta = "CarpetaPrueba";
 	private final String nombreSubcarpeta = "SubcarpetaPrueba";
@@ -53,6 +54,18 @@ public class CarpetaTest {
 		return coleccion;
 	}
 	
+	/**
+	 * Test para comprobar que el método obtenerNoLeidos() funciona como se espera
+	 * cuando inicialmente no hay mensajes almacenados.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera que lo mencionado anteriormente funcione correctamente.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve lo mencionado anteriormente.
+	 */
 	@Test
 	public void carpetaObtenerNoLeidosTest_InitialState() throws OperacionInvalida {
 		Carpeta carpetaATestear = new Carpeta(nombreCarpeta);
@@ -61,6 +74,18 @@ public class CarpetaTest {
 
 	}
 	
+	/**
+	 * Test para comprobar que el método obtenerTamaño() funciona como se espera
+	 * cuando inicialmente no hay mensajes almacenados.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera que lo mencionado anteriormente funcione correctamente.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve lo mencionado anteriormente.
+	 */
 	@Test
 	public void carpetaObtenerTamañoTest_InitialState() throws OperacionInvalida {
 		Carpeta carpetaATestear = new Carpeta(nombreCarpeta);
@@ -69,6 +94,17 @@ public class CarpetaTest {
 
 	}
 	
+	/**
+	 * Test para comprobar que el método obtenerIcono() funciona como se espera.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera que el método devuelva el icono de la carpeta.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve lo mencionado anteriormente.
+	 */
 	@Test
 	public void carpetaObtenerIconoTest() throws OperacionInvalida {
 		Carpeta carpetaATestear = new Carpeta(nombreCarpeta);
@@ -77,6 +113,19 @@ public class CarpetaTest {
 
 	}
 	
+	/**
+	 * Test para comprobar que el método obtenerVisualizacion() funciona como se espera
+	 * cuando inicialmente no hay mensajes almacenados.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera que se devuelva la visualización esperada cuando no hay mensajes nuevos
+	 *  	con la sintaxis adecuada.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve lo mencionado anteriormente.
+	 */
 	@Test
 	public void carpetaObtenerVisualizacionTest_InitialState() throws OperacionInvalida {
 		Carpeta carpetaATestear = new Carpeta(nombreCarpeta);
@@ -85,6 +134,19 @@ public class CarpetaTest {
 
 	}
 	
+	/**
+	 * Test para comprobar que el método obtenerPreVisualizacion() funciona como se espera
+	 * cuando inicialmente no hay mensajes almacenados.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera que se devuelva la previsualización esperada cuando no hay mensajes nuevos
+	 *  	con la sintaxis adecuada.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve lo mencionado anteriormente.
+	 */
 	@Test
 	public void carpetaObtenerPreVisualizacionTest_InitialState() throws OperacionInvalida {
 		Carpeta carpetaATestear = new Carpeta(nombreCarpeta);
@@ -93,6 +155,19 @@ public class CarpetaTest {
 
 	}
 	
+	/**
+	 * Test para comprobar que el método explorar() funciona como se espera
+	 * cuando inicialmente no hay mensajes almacenados.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera que se devuelva una colección vacía cuando al principio 
+	 *  	no hay mensajes almacenados.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve lo mencionado anteriormente.
+	 */
 	@Test
 	public void carpetaExplorarTest_InitialState() throws OperacionInvalida {
 		Carpeta carpetaATestear = new Carpeta(nombreCarpeta);
@@ -100,6 +175,19 @@ public class CarpetaTest {
 		assertEquals(new Vector(), carpetaATestear.explorar());
 	}
 	
+	/**
+	 * Test para comprobar que el método buscar() funciona como se espera
+	 * cuando inicialmente no hay mensajes almacenados.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera que se devuelva una colección vacía cuando al principio 
+	 *  	no hay mensajes almacenados.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve lo mencionado anteriormente.
+	 */
 	@Test
 	public void carpetaBuscarTest_InitialState() throws OperacionInvalida {
 		Carpeta carpetaATestear = new Carpeta(nombreCarpeta);
@@ -108,6 +196,18 @@ public class CarpetaTest {
 
 	}
 	
+	/**
+	 * Test para comprobar que el método obtenerHijo() devuelva la excepción
+	 * {@link ArrayIndexOutOfBoundsException} cuando no hay mensajes almacenados.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera que se devuelva la excepción mencionada anteriormente.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve lo mencionado anteriormente.
+	 */
 	@Test
 	public void carpetaObtenerHijosTest_InitialState() throws OperacionInvalida {
 		Carpeta carpetaATestear = new Carpeta(nombreCarpeta);
@@ -117,6 +217,18 @@ public class CarpetaTest {
 
 	}
 
+	/**
+	 * Test para comprobar que el método obtenerVisualizacion() funciona como se espera.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera devolver la visualización de la carpeta con el nº de mensajes
+	 *  	nuevos con la sintaxis esperada.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve lo mencionado anteriormente.
+	 */
 	@Test
 	public void obtenerVisualizacionMensajesTest() throws OperacionInvalida {
 		Carpeta carpetaATestear = prepareCarpetaWithMensajes();
@@ -124,6 +236,18 @@ public class CarpetaTest {
 		assertEquals(nombreCarpeta + " (" + num_mensajes + ")", carpetaATestear.obtenerVisualizacion());
 	}
 
+	/**
+	 * Test para comprobar que el método obtenerPreVisualizacion() funciona como se espera.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera devolver la previsualización de la carpeta con el nº de mensajes
+	 *  	nuevos con la sintaxis esperada.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve lo mencionado anteriormente.
+	 */
 	@Test
 	public void obtenerPreVisualizacionMensajesTest() throws OperacionInvalida {
 		Carpeta carpetaATestear = prepareCarpetaWithMensajes();
@@ -131,6 +255,17 @@ public class CarpetaTest {
 		assertEquals(nombreCarpeta + " (" + num_mensajes + ")", carpetaATestear.obtenerPreVisualizacion());
 	}
 
+	/**
+	 * Test para comprobar que el método explorar() funciona como se espera.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera devolver el contenido existente dentro de la carpeta.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve lo mencionado anteriormente.
+	 */
 	@Test
 	public void explorarCarpetaWithMensajesTest() throws OperacionInvalida {
 		Carpeta carpetaATestear = new Carpeta(nombreCarpeta);
@@ -145,6 +280,19 @@ public class CarpetaTest {
 
 	}
 
+	/**
+	 * Test para comprobar que el método buscar() funciona como se espera
+	 * en distintas situaciones de búsqueda.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera devolver los resultados indicados dependiendo de la búsqueda
+	 *  	que se esté haciendo.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve lo mencionado anteriormente.
+	 */
 	@Test
 	public void buscarEnCarpetaWithMensajesTest() throws OperacionInvalida {
 		Carpeta carpetaATestear = new Carpeta(nombreCarpeta);
@@ -180,6 +328,17 @@ public class CarpetaTest {
 
 	}
 
+	/**
+	 * Test para comprobar que el método añadir() funciona como se espera.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera que el mensaje se haya añadido correctamente.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve lo mencionado anteriormente.
+	 */
 	@Test
 	public void añadirMensajeACarpetaTest() throws OperacionInvalida {
 		Carpeta carpetaATestear = new Carpeta(nombreCarpeta);
@@ -191,6 +350,17 @@ public class CarpetaTest {
 		assertEquals(mensaje, carpetaATestear.obtenerHijo(0));
 	}
 
+	/**
+	 * Test para comprobar que el método añadir() funciona como se espera.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera que la subcarpeta vacía se haya añadido correctamente.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve lo mencionado anteriormente.
+	 */
 	@Test
 	public void añadirSubcarpetaVaciaACarpetaTest() throws OperacionInvalida {
 		Carpeta carpetaATestear = new Carpeta(nombreCarpeta);
@@ -202,6 +372,17 @@ public class CarpetaTest {
 		assertEquals(subcarpeta, carpetaATestear.obtenerHijo(0));
 	}
 
+	/**
+	 * Test para comprobar que el método añadir() funciona como se espera.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera que la subcarpeta con mensaje se haya añadido correctamente.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve lo mencionado anteriormente.
+	 */
 	@Test
 	public void añadirSubcarpetaConMensajeACarpetaTest() throws OperacionInvalida {
 		Carpeta carpetaATestear = new Carpeta(nombreCarpeta);
@@ -217,6 +398,17 @@ public class CarpetaTest {
 		assertEquals(subcarpeta, carpetaATestear.obtenerHijo(0));
 	}
 	
+	/**
+	 * Test para comprobar que la carpeta padre del mensaje se cambia correctamente.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera que la carpeta padre del mensaje se cambie correctamente.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		que se devuelve lo mencionado anteriormente.
+	 */
 	@Test
 	public void cambiarCarpetaPadreDeCorreo() throws OperacionInvalida {
 		Carpeta carpetaATestear = new Carpeta(nombreCarpeta);
