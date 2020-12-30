@@ -24,7 +24,26 @@ import gal.udc.fic.vvs.util.TextoGenerator;
 @RunWith(JUnitQuickcheck.class)
 public class AdjuntoPBT {
 
-	
+	/**
+	 * Test para comprobar el método obtenerTamaño() usando pruebas basadas en propiedades.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de integración, ya que dentro del método el tipo de
+	 * 		integración se basa en procedimientos, en el cual se usan los objetos pasados en el
+	 * 		constructor para que el método devuelva el tamaño en total ocupado por el mensaje y
+	 * 		el archivo adjunto.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera obtener el tamaño correcto del adjunto.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba basada en propiedades,
+	 *      por lo que se usan las clases {@link MensajeGenerator} para generar
+	 *      mensajes aleatorios y {@link TextoGenerator} para generar textos adjuntos aleatorios,
+	 *      esperando que se devuelva el resultado esperado dependiendo del contenido tanto del
+	 *      mensaje como del texto adjunto a éste.
+	 *
+	 * @param mensaje mensaje generado aleatoriamente
+	 * @param texto texto generado aleatoriamente
+	 */
 	@Property
 	public void textoAdjuntoObtenerTamañoTest(@From(MensajeGenerator.class) Mensaje mensaje,
 			@From(TextoGenerator.class) Texto texto) {
@@ -34,6 +53,26 @@ public class AdjuntoPBT {
 
 	}
 
+	/**
+	 * Test para comprobar el método obtenerTamaño() usando pruebas basadas en propiedades.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de integración, ya que dentro del método el tipo de
+	 * 		integración se basa en procedimientos, en el cual se usan los objetos pasados en el
+	 * 		constructor para que el método devuelva el tamaño en total ocupado por el mensaje y
+	 * 		el archivo adjunto.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera obtener el tamaño correcto del adjunto.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba basada en propiedades,
+	 *      por lo que se usan las clases {@link MensajeGenerator} para generar
+	 *      mensajes aleatorios y {@link AudioGenerator} para generar audios adjuntos aleatorios,
+	 *      esperando que se devuelva el resultado esperado dependiendo del contenido tanto del
+	 *      mensaje como del texto adjunto a éste.
+	 *
+	 * @param mensaje mensaje generado aleatoriamente
+	 * @param audio audio generado aleatoriamente
+	 */
 	@Property
 	public void audioAdjuntoObtenerTamañoTest(@From(MensajeGenerator.class) Mensaje mensaje,
 			@From(AudioGenerator.class) Audio audio) {
@@ -43,6 +82,26 @@ public class AdjuntoPBT {
 		
 	}
 
+	/**
+	 * Test para comprobar el método obtenerTamaño() usando pruebas basadas en propiedades.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de integración, ya que dentro del método el tipo de
+	 * 		integración se basa en procedimientos, en el cual se usan los objetos pasados en el
+	 * 		constructor para que el método devuelva el tamaño en total ocupado por el mensaje y
+	 * 		el archivo adjunto.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera obtener el tamaño correcto del adjunto.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba basada en propiedades,
+	 *      por lo que se usan las clases {@link MensajeGenerator} para generar
+	 *      mensajes aleatorios y {@link ImagenGenerator} para generar imagenes adjuntas aleatorios,
+	 *      esperando que se devuelva el resultado esperado dependiendo del contenido tanto del
+	 *      mensaje como del texto adjunto a éste.
+	 *
+	 * @param mensaje mensaje generado aleatoriamente
+	 * @param imagen imagen generada aleatoriamente
+	 */
 	@Property
 	public void imagenAdjuntoObtenerTamañoTest(@From(MensajeGenerator.class) Mensaje mensaje,
 			@From(ImagenGenerator.class) Imagen imagen) {
