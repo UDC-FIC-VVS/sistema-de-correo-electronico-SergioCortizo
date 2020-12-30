@@ -3,7 +3,6 @@ package gal.udc.fic.vvs.email.correo;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
-import org.junit.Test;
 import org.junit.runner.RunWith;
 
 import com.pholser.junit.quickcheck.From;

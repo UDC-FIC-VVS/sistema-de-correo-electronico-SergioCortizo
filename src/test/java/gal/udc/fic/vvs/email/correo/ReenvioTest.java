@@ -18,12 +18,11 @@ public class ReenvioTest {
 
 	Mensaje mensajeReenviado = new Mensaje(
 			new Texto("Texto de prueba reenviado", "Este es un texto de prueba reenviado"));
-
+	
 	@Test
-	public void reenvioIsWellFormedTest() {
+	public void reenvioObtenerVisualizacionTest() {
 		Reenvio reenvio = new Reenvio(mensaje, mensajeReenviado);
 
-		assertEquals(mensaje.obtenerTamaño() + mensajeReenviado.obtenerTamaño(), reenvio.obtenerTamaño());
 		assertEquals(
 				mensaje.obtenerVisualizacion() + "\n\n---- Correo reenviado ----\n\n"
 						+ mensajeReenviado.obtenerVisualizacion() + "\n---- Fin correo reenviado ----",

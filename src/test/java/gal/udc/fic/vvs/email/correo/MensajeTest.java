@@ -74,7 +74,6 @@ public class MensajeTest {
 		mensajeATestear.establecerLeido(true);
 		
 		assertEquals(0, mensajeATestear.obtenerNoLeidos());
-		assertEquals(Correo.ICONO_MENSAJE, mensajeATestear.obtenerIcono());
 	}
 	
 	@Test
@@ -84,7 +83,6 @@ public class MensajeTest {
 		mensajeATestear.establecerLeido(false);
 		
 		assertEquals(1, mensajeATestear.obtenerNoLeidos());
-		assertEquals(Correo.ICONO_NUEVO_MENSAJE, mensajeATestear.obtenerIcono());
 	}
 	
 	@Test
