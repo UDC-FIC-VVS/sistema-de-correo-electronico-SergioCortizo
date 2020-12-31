@@ -270,7 +270,7 @@ public class CarpetaLimitadaPBT {
 	}
 
 	/**
-	 * Test para comprobar el método eliminar() usando pruebas basadas en propiedades
+	 * Test para comprobar el método obtenerHijo() usando pruebas basadas en propiedades
 	 * para comprobar que se devuelve cualquier contenido de la carpeta correctamente.
 	 * <p>
 	 * - Nivel de prueba: prueba a nivel de integración, donde el tipo de integración

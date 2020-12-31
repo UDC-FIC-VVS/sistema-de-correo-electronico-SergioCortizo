@@ -1,7 +1,6 @@
 package gal.udc.fic.vvs.email.correo;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 import org.junit.runner.RunWith;
 
@@ -10,7 +9,6 @@ import com.pholser.junit.quickcheck.Property;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
 
 import gal.udc.fic.vvs.email.archivo.Texto;
-import gal.udc.fic.vvs.util.MensajeGenerator;
 import gal.udc.fic.vvs.util.TextoGenerator;
 
 /**
@@ -20,12 +18,22 @@ import gal.udc.fic.vvs.util.TextoGenerator;
  */
 @RunWith(JUnitQuickcheck.class)
 public class MensajePBT {
-
-	@Property
-	public void obtenerPrevisualizacion(@From(MensajeGenerator.class) Mensaje mensaje) {
-		assertTrue(mensaje.obtenerPreVisualizacion().length() <= 35);
-	}
 	
+	/**
+	 * Test para comprobar el método obtenerTamaño() usando pruebas basadas en propiedades.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra positiva,
+	 *  	se espera que el tamaño del mensaje sea el mismo que el del texto.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba basada en propiedades,
+	 *      por lo que se usa la clase {@link TextoGenerator} para generar
+	 *      contenido para el mensaje aleatoriamente, asegurando que se cumple la
+	 *      propiedad independientemente del texto que guarde el mensaje.
+	 *
+	 * @param texto texto generado aleatoriamente
+	 */
 	@Property
 	public void mensajeObtenerTamañoTest (@From(TextoGenerator.class) Texto texto) {
 		Mensaje mensajeATestear = new Mensaje(texto);
