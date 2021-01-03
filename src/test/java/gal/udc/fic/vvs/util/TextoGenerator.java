@@ -6,6 +6,11 @@ import com.pholser.junit.quickcheck.random.SourceOfRandomness;
 
 import gal.udc.fic.vvs.email.archivo.Texto;
 
+/**
+ * Clase para generar de forma aleatoria un objeto de la clase {@link Texto}.
+ * 
+ * @author Sergio Cortizo De Dios
+ */
 public class TextoGenerator extends Generator<Texto> {
 
 	public TextoGenerator() {

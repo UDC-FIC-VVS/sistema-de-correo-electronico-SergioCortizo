@@ -9,6 +9,11 @@ import gal.udc.fic.vvs.email.correo.Carpeta;
 import gal.udc.fic.vvs.email.correo.Mensaje;
 import gal.udc.fic.vvs.email.correo.OperacionInvalida;
 
+/**
+ * Clase para generar de forma aleatoria un objeto de la clase {@link Carpeta}.
+ * 
+ * @author Sergio Cortizo De Dios
+ */
 public class CarpetaGenerator extends Generator<Carpeta> {
 	
     public static final int TAMAÑO = (int) (Math.random() * (1000 - 1)) + 1;

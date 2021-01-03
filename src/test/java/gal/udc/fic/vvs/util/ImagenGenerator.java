@@ -6,6 +6,11 @@ import com.pholser.junit.quickcheck.random.SourceOfRandomness;
 
 import gal.udc.fic.vvs.email.archivo.Imagen;
 
+/**
+ * Clase para generar de forma aleatoria un objeto de la clase {@link Imagen}.
+ * 
+ * @author Sergio Cortizo De Dios
+ */
 public class ImagenGenerator extends Generator<Imagen> {
 
 	public ImagenGenerator() {

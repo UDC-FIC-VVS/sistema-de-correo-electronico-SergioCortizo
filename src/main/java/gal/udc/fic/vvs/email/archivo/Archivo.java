@@ -13,25 +13,25 @@ public abstract class Archivo {
 
     public String obtenerNombre() {
     	EtmPoint point = etmMonitor.createPoint("Archivo:obtenerNombre");
-    	
+    	point.collect();
         return _nombre;
     }
 
     public String obtenerContenido() {
     	EtmPoint point = etmMonitor.createPoint("Archivo:obtenerContenido");
-    	
+    	point.collect();
         return _contenido;
     }
 
     public int obtenerTamaño() {
     	EtmPoint point = etmMonitor.createPoint("Archivo:obtenerTamaño");
-    	
+    	point.collect();
         return _contenido.length();
     }
 
     public String obtenerPreVisualizacion() {
     	EtmPoint point = etmMonitor.createPoint("Archivo:obtenerPreVisualizacion");
-    	
+    	point.collect();
         return _nombre + "(" + obtenerTamaño() + " bytes, " + obtenerMimeType() + ")";
     }
 

@@ -4,6 +4,11 @@ import com.pholser.junit.quickcheck.generator.GenerationStatus;
 import com.pholser.junit.quickcheck.generator.Generator;
 import com.pholser.junit.quickcheck.random.SourceOfRandomness;
 
+/**
+ * Clase para generar de forma aleatoria un objeto de la clase {@link String}.
+ * 
+ * @author Sergio Cortizo De Dios
+ */
 public class MyCharacterGenerator extends Generator<String> {
 
     private static final String LOWERCASE_CHARS = "abcdefghijklmnopqrstuvwxyz";
