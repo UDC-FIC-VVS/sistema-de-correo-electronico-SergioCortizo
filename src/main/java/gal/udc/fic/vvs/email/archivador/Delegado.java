@@ -29,8 +29,8 @@ public class Delegado extends DecoradorArchivador {
 
     public void establecerDelegado(Archivador archivador) {
     	EtmPoint point = monitor.createPoint("DecoradorArchivador:establecerDelegado");
-    	point.collect();
         _delegado = archivador;
+        point.collect();
     }
 
     private Archivador _delegado;

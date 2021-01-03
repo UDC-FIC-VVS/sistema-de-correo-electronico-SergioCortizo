@@ -8,6 +8,8 @@
     parte de Google, las cuales se pueden encontrar en:
     
     https://google.github.io/styleguide/javaguide.html
+    
+    Para ejecutar checkstyle, usar el comando mvn checkstyle:check
  -->
 
 <module name = "Checker">

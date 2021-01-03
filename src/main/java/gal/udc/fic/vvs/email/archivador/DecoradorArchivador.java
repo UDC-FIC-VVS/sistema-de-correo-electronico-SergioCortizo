@@ -43,8 +43,8 @@ public abstract class DecoradorArchivador implements Archivador {
 
     public void establecerDelegado(Archivador archivador) {
     	EtmPoint point = monitor.createPoint("DecoradorArchivador:obtenerNombre");
-    	point.collect();
         _decorado.establecerDelegado(archivador);
+        point.collect();
     }
 
     private Archivador _decorado;

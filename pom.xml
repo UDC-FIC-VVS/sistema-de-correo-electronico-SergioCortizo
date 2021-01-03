@@ -83,6 +83,12 @@
 	    <artifactId>jetm-optional</artifactId>
 	    <version>1.2.3</version>
 	</dependency>
+	<dependency>
+	    <groupId>org.mockito</groupId>
+	    <artifactId>mockito-all</artifactId>
+	    <version>1.10.19</version>
+	    <scope>test</scope>
+	</dependency>
   </dependencies>
 
   <build>
@@ -175,6 +181,14 @@
 		            <param>gal.udc.fic.vvs.archUnit.*</param>
 		            <param>gal.udc.fic.vvs.unit.*</param>
 		        </targetTests>
+		        <avoidCallsTo>
+				    <avoidCallsTo>java.util.logging</avoidCallsTo>
+				    <avoidCallsTo>java.util.Vector</avoidCallsTo>
+				    <avoidCallsTo>org.apache.log4j</avoidCallsTo>
+				    <avoidCallsTo>org.slf4j</avoidCallsTo>
+				    <avoidCallsTo>org.apache.commons.logging</avoidCallsTo>
+				    <avoidCallsTo>etm.core.monitor</avoidCallsTo>
+				</avoidCallsTo>
 		    </configuration>
 		</plugin>
     </plugins>

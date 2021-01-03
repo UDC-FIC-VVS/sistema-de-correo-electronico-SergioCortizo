@@ -59,4 +59,29 @@ public class ArchivadorSimpleTest {
 		assertFalse(archivadorSimplePrueba.almacenarCorreo(correo));
 		
 	}
+	
+	/**
+	 * Test para comprobar que el método almacenarCorreo() funciona como se espera.
+	 * <p>
+	 * - Nivel de prueba: prueba a nivel de unidad.
+	 * <p>
+	 * - Categoría de prueba: prueba funcional dinámica de caja negra negativa,
+	 *  	el test está pensado para exponer un error en el cual si el archivo
+	 *  	tiene el mismo peso que el espacio disponible en el archivador
+	 *  	el archivo no se guarda.
+	 * <p>
+	 * - Mecanismo de selección de datos: es una prueba manual, sólo se prueba
+	 * 		el error.
+	 */
+	//TODO: Bug encontrado. Si el archivo tiene el mismo tamaño que el espacio disponible este no se guarda.
+	@Test 
+	public void almacenarCorreoTest_EspacioIgualQueTamañoArchivo() {
+		
+		ArchivadorSimple archivadorSimplePrueba = new ArchivadorSimple(nombreArchivador, 1);
+			
+		Mensaje correo = new Mensaje(new Texto("T", "T"));
+				
+		assertFalse(archivadorSimplePrueba.almacenarCorreo(correo));
+		
+	}
 }

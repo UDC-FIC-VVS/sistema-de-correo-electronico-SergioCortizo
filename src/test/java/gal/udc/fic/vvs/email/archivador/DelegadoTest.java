@@ -3,6 +3,7 @@ package gal.udc.fic.vvs.email.archivador;
 import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
+import org.mockito.Mockito;
 
 /**
  * Clase para probar usando pruebas manuales los métodos de la clase {@link Delegado}.
