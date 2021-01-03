@@ -143,7 +143,7 @@ public class CarpetaLimitadaPBT {
 	 */
 	//Otro test que refleja el problema al buscar en CarpetaLimitada
 	@Property
-	public void buscarTest_conCarpetaSuperandoTamaño(@From(CarpetaLimitadaGenerator.class) CarpetaLimitada carpeta)
+	public void buscarTest_superandoLimiteCarpeta(@From(CarpetaLimitadaGenerator.class) CarpetaLimitada carpeta)
 			throws OperacionInvalida {
 		assertEquals(carpeta.obtenerNoLeidos(), CarpetaLimitadaGenerator.TAMAÑO);
 
