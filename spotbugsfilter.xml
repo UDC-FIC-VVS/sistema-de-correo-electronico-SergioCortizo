@@ -1,0 +1,28 @@
+<FindBugsFilter
+              xmlns="https://github.com/spotbugs/filter/3.0.0"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="https://github.com/spotbugs/filter/3.0.0 https://raw.githubusercontent.com/spotbugs/spotbugs/3.1.0/spotbugs/etc/findbugsfilter.xsd">
+  <Match>
+	  <Bug category="PERFORMANCE" />
+  </Match>
+  <Match>
+	  <Bug category="CORRECTNESS" />
+  </Match>
+  <Match>
+	  <Bug category="MT_CORRECTNESS" />
+  </Match>
+  <Match>
+	  <Bug category="BAD_PRACTICICE" />
+  </Match>
+  <Match>
+	  <Bug category="STYLE" />
+  </Match>
+  
+  <Match>
+	  <Not>
+	    <Class name="gal.udc.fic.vvs.email.cliente.Cliente" />
+	    <Class name="gal.udc.fic.vvs.email.cliente.ClienteImp" />
+	    <Class name="gal.udc.fic.vvs.email.cliente.PopupListener" />
+	  </Not>
+  </Match>
+</FindBugsFilter>

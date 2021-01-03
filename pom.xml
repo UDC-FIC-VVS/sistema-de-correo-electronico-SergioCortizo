@@ -163,6 +163,12 @@
 		      		<version>4.2.0</version>
 		    	</dependency>
 		 	</dependencies>
+		 	<configuration>
+	          <xmlOutput>true</xmlOutput>
+	          <!-- Optional directory to put spotbugs xdoc xml report -->
+	          <xmlOutputDirectory>target/site</xmlOutputDirectory>
+	          <includeFilterFile>spotbugsfilter.xml</includeFilterFile>
+	        </configuration>
 		</plugin>
 		<plugin>
 		    <groupId>org.pitest</groupId>
