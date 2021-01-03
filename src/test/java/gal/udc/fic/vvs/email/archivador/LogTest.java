@@ -7,6 +7,9 @@ import java.io.PrintStream;
 
 import org.junit.Test;
 
+import etm.core.configuration.EtmManager;
+import etm.core.monitor.EtmMonitor;
+import etm.core.monitor.EtmPoint;
 import gal.udc.fic.vvs.email.correo.Carpeta;
 import gal.udc.fic.vvs.email.correo.OperacionInvalida;
 
@@ -16,6 +19,8 @@ import gal.udc.fic.vvs.email.correo.OperacionInvalida;
  * @author Sergio Cortizo De Dios
  */
 public class LogTest {
+	
+	private static EtmMonitor monitor = EtmManager.getEtmMonitor();
 	
 	/**
 	 * Test para comprobar que el método obtenerDelegado() funciona como se espera.
@@ -30,6 +35,8 @@ public class LogTest {
 	 */
 	@Test
 	public void LogTest_obtenerDelegado () {
+		EtmPoint point = monitor.createPoint("Log:LogTest_obtenerDelegado");
+		
 		ArchivadorSimple archivador = new ArchivadorSimple("archivadorSimple", 1);
 		
 		ArchivadorSimple archivadorDelegado = new ArchivadorSimple("archivadorDelegado", 1);
@@ -41,6 +48,8 @@ public class LogTest {
 		Log log = new Log(delegado);
 		
 		assertEquals(archivadorDelegado, log.obtenerDelegado());
+		
+		point.collect();
 	}
 	
 	/**
@@ -57,6 +66,8 @@ public class LogTest {
 	 */
 	@Test
 	public void LogTest_obtenerDelegadoConArchivadorSimple () {
+		EtmPoint point = monitor.createPoint("Log:LogTest_obtenerDelegadoConArchivadorSimple");
+		
 		ArchivadorSimple archivador = new ArchivadorSimple("archivadorPrueba", 1);
 		
 		ArchivadorSimple archivadorDelegado = new ArchivadorSimple("archivadorDelegado", 1);
@@ -66,6 +77,8 @@ public class LogTest {
 		log.establecerDelegado(archivadorDelegado);
 		
 		assertEquals(null, log.obtenerDelegado());
+		
+		point.collect();
 	}
 	
 	/**
@@ -81,6 +94,8 @@ public class LogTest {
 	 */
 	@Test
 	public void LogTest_almacenarCorreo_verifyPrintlnIsCalled () throws OperacionInvalida {
+		EtmPoint point = monitor.createPoint("Log:LogTest_almacenarCorreo_verifyPrintlnIsCalled");
+		
 		final ByteArrayOutputStream outputStreamCaptor = new ByteArrayOutputStream();
 		
 		System.setOut(new PrintStream(outputStreamCaptor));
@@ -97,5 +112,7 @@ public class LogTest {
 		
 		assertEquals("Mensaxe de log", outputStreamCaptor.toString()
 			      .trim());
+		
+		point.collect();
 	}
 }

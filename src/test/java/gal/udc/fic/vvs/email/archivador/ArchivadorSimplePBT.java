@@ -22,7 +22,7 @@ import gal.udc.fic.vvs.util.MyCharacterGenerator;
  */
 @RunWith(JUnitQuickcheck.class)
 public class ArchivadorSimplePBT {
-	
+		
 	private String nombreArchivador = "archivadorPrueba";
 	
 	/**

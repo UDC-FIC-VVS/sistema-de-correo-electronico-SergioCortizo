@@ -8,10 +8,6 @@ import com.pholser.junit.quickcheck.From;
 import com.pholser.junit.quickcheck.Property;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
 
-import etm.core.configuration.EtmManager;
-import etm.core.monitor.EtmMonitor;
-import etm.core.monitor.EtmPoint;
-import gal.udc.fic.vvs.email.archivo.Audio;
 import gal.udc.fic.vvs.util.MyCharacterGenerator;
 
 /**
@@ -21,7 +17,6 @@ import gal.udc.fic.vvs.util.MyCharacterGenerator;
  */
 @RunWith(JUnitQuickcheck.class)
 public class AudioPBT {
-	private static EtmMonitor monitor = EtmManager.getEtmMonitor();
 
 	/**
 	 * Test para comprobar el método obtenerNombre() usando pruebas basadas en propiedades.
@@ -42,13 +37,10 @@ public class AudioPBT {
 	@Property
 	public void obtenerNombrePBT(@From(MyCharacterGenerator.class) String nombreAudio,
 			@From(MyCharacterGenerator.class) String contenidoAudio) {
-		EtmPoint point = monitor.createPoint("Audio:obtenerNombrePBT");
 		
 		Audio audioATestear = new Audio(nombreAudio, contenidoAudio);
 		
 		assertEquals(nombreAudio, audioATestear.obtenerNombre());
-		
-		point.collect();
 	}
 	
 	/**
@@ -70,13 +62,10 @@ public class AudioPBT {
 	@Property
 	public void obtenerContenidoPBT(@From(MyCharacterGenerator.class) String nombreAudio,
 			@From(MyCharacterGenerator.class) String contenidoAudio) {
-		EtmPoint point = monitor.createPoint("Audio:obtenerContenidoPBT");
 		
 		Audio textoATestear = new Audio(nombreAudio, contenidoAudio);
 		
 		assertEquals(contenidoAudio, textoATestear.obtenerContenido());
-		
-		point.collect();
 	}
 	
 	/**
@@ -99,13 +88,11 @@ public class AudioPBT {
 	@Property
 	public void obtenerTamañoPBT(@From(MyCharacterGenerator.class) String nombreAudio,
 			@From(MyCharacterGenerator.class) String contenidoAudio) {
-		EtmPoint point = monitor.createPoint("Audio:obtenerTamañoPBT");
 		
 		Audio audioATestear = new Audio(nombreAudio, contenidoAudio);
 		
 		assertEquals(contenidoAudio.length(), audioATestear.obtenerTamaño());
 		
-		point.collect();
 	}
 	
 	/**
@@ -131,7 +118,6 @@ public class AudioPBT {
 	@Property
 	public void obtenerPreVisualizacionPBT(@From(MyCharacterGenerator.class) String nombreAudio,
 			@From(MyCharacterGenerator.class) String contenidoAudio) {
-		EtmPoint point = monitor.createPoint("Audio:obtenerPreVisualizacionPBT");
 		
 		Audio textoATestear = new Audio(nombreAudio, contenidoAudio);
 		
@@ -139,8 +125,6 @@ public class AudioPBT {
 				nombreAudio + "(" + contenidoAudio.length() + " bytes, audio/ogg)";
 		
 		assertEquals(previsualizacionAudio, textoATestear.obtenerPreVisualizacion());
-		
-		point.collect();
 	}
 	
 	

@@ -4,16 +4,13 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import gal.udc.fic.vvs.email.archivador.ArchivadorSimple;
-import gal.udc.fic.vvs.email.archivador.Delegado;
-
 /**
  * Clase para probar usando pruebas manuales los métodos de la clase {@link Delegado}.
  * 
  * @author Sergio Cortizo De Dios
  */
 public class DelegadoTest {
-	
+		
 	/**
 	 * Test para comprobar que el método establecerDelegado() funciona como se espera.
 	 * <p>
@@ -27,6 +24,7 @@ public class DelegadoTest {
 	 */
 	@Test
 	public void DelegadoTest_establecerDelegado () {
+		
 		ArchivadorSimple archivador = new ArchivadorSimple("archivadorPrueba", 1);
 		
 		Delegado delegado = new Delegado(archivador);
@@ -34,6 +32,7 @@ public class DelegadoTest {
 		delegado.establecerDelegado(archivador);
 		
 		assertEquals(archivador, delegado.obtenerDelegado());
+		
 	}
 	
 }

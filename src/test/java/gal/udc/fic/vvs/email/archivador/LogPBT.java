@@ -24,6 +24,7 @@ import gal.udc.fic.vvs.util.MyCharacterGenerator;
  */
 @RunWith(JUnitQuickcheck.class)
 public class LogPBT {
+	
 
 	/**
 	 * Test para comprobar el método almacenarCorreo() usando pruebas basadas en propiedades.
@@ -44,11 +45,13 @@ public class LogPBT {
 	 */
 	//TODO: Bug encontrado. El mensaje de log debería contener más información.
 	@Property
-	public void logTest_almacenarCorreo(@InRange(min = "1") int espacioArchivador,
+	public void logPBT_almacenarCorreo(@InRange(min = "1") int espacioArchivador,
 										@From(MensajeGenerator.class) Mensaje mensaje) {
+		
 		Log logTest = new Log(new ArchivadorSimple("archivadorPrueba", espacioArchivador));
 		
 		assertTrue(logTest.almacenarCorreo(mensaje));
+		
 	}
 	
 	/**
@@ -69,12 +72,14 @@ public class LogPBT {
 	 * @param mensaje mensaje aleatorio
 	 */
 	@Property
-	public void logTest_almacenarCorreo_espacioReducido(@InRange(min = "1") int espacioArchivador,
+	public void logPBT_almacenarCorreo_espacioReducido(@InRange(min = "1") int espacioArchivador,
 										@From(MensajeGenerator.class) Mensaje mensaje) {
+		
 		Log logTest = new Log(new ArchivadorSimple("archivadorPrueba", espacioArchivador));
 		
 		logTest.almacenarCorreo(mensaje);
 		assertEquals(espacioArchivador - mensaje.obtenerTamaño(), logTest.obtenerEspacioDisponible());
+		
 	}
 	
 	/**
@@ -94,10 +99,12 @@ public class LogPBT {
 	 * @param espacio espacio a asignar
 	 */
 	@Property
-	public void logTest_obtenerEspacioTotal(int espacioArchivador) {
+	public void logPBT_obtenerEspacioTotal(int espacioArchivador) {
+		
 		Log logTest = new Log(new ArchivadorSimple("archivadorPrueba", espacioArchivador));
 		
 		assertEquals(espacioArchivador, logTest.obtenerEspacioTotal());
+		
 	}
 	
 	/**
@@ -117,10 +124,12 @@ public class LogPBT {
 	 * @param espacio espacio a asignar
 	 */
 	@Property
-	public void logTest_obtenerEspacioDisponible(@InRange(min = "1") int espacioArchivador) {
+	public void logPBT_obtenerEspacioDisponible(@InRange(min = "1") int espacioArchivador) {
+		
 		Log logTest = new Log(new ArchivadorSimple("archivadorPrueba", espacioArchivador));
 		
 		assertEquals(espacioArchivador, logTest.obtenerEspacioDisponible());
+		
 	}
 	
 	/**
@@ -139,7 +148,8 @@ public class LogPBT {
 	 * @param nombre nombre del archivador
 	 */
 	@Property
-	public void LogTest_obtenerNombre (@From(MyCharacterGenerator.class) String nombre) {
+	public void LogPBT_obtenerNombre (@From(MyCharacterGenerator.class) String nombre) {
+		
 		ArchivadorSimple archivador = new ArchivadorSimple(nombre, 1);
 		
 		Log log = new Log(archivador);
@@ -147,6 +157,7 @@ public class LogPBT {
 		log.establecerDelegado(archivador);
 		
 		assertEquals(nombre, log.obtenerNombre());
+		
 	}
 	
 	/**
@@ -166,8 +177,9 @@ public class LogPBT {
 	 * @param mensaje mensaje que se va a almacenar
 	 */
 	@Property
-	public void LogTest_almacenarCorreo (@InRange(min = "1") int espacioArchivador,
+	public void LogPBT_almacenarCorreo (@InRange(min = "1") int espacioArchivador,
 			@From(MensajeGenerator.class) Mensaje mensaje) {
+		
 		ArchivadorSimple archivador = new ArchivadorSimple("archivadorPrueba", espacioArchivador);
 		
 		ArchivadorSimple archivadorDelegado = new ArchivadorSimple("archivadorDelegado", espacioArchivador);
@@ -179,6 +191,7 @@ public class LogPBT {
 		boolean result = log.almacenarCorreo(mensaje);
 		
 		assertTrue(result);
+		
 	}
 	
 	/**
@@ -198,7 +211,7 @@ public class LogPBT {
 	 * @throws OperacionInvalida
 	 */
 	@Property
-	public void LogTest_almacenarCorreo_false (
+	public void LogPBT_almacenarCorreo_false (
 			@From(MyCharacterGenerator.class) String contenido) throws OperacionInvalida {
 		
 		int max = contenido.length() - 1; 
@@ -218,5 +231,6 @@ public class LogPBT {
 		boolean result = log.almacenarCorreo(new Mensaje(new Texto("mensaje", contenido)));
 		
 		assertFalse(result);
+		
 	}
 }

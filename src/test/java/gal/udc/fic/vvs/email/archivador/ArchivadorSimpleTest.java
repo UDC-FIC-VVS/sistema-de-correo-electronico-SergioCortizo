@@ -5,7 +5,6 @@ import static org.junit.Assert.assertFalse;
 
 import org.junit.Test;
 
-import gal.udc.fic.vvs.email.archivador.ArchivadorSimple;
 import gal.udc.fic.vvs.email.archivo.Texto;
 import gal.udc.fic.vvs.email.correo.Mensaje;
 
@@ -15,7 +14,7 @@ import gal.udc.fic.vvs.email.correo.Mensaje;
  * @author Sergio Cortizo De Dios
  */
 public class ArchivadorSimpleTest {
-
+	
 	private String nombreArchivador = "archivadorPrueba";
 	private int espacioArchivador = 1000;
 	
@@ -31,10 +30,11 @@ public class ArchivadorSimpleTest {
 	 * 		que se devuelve null al no asignarse ningún delegado.
 	 */
 	@Test
-	public void archivadorSimpleTest_obtenerDelegado_Null() {
+	public void archivadorSimpleTest_obtenerDelegado_Null() {		
 		ArchivadorSimple archivadorSimplePrueba = new ArchivadorSimple(nombreArchivador, espacioArchivador);
 		
 		assertEquals(null, archivadorSimplePrueba.obtenerDelegado());
+		
 	}
 	
 	/**
@@ -51,10 +51,12 @@ public class ArchivadorSimpleTest {
 	//TODO: Bug encontrado. El valor 0 no debería ser un valor válido para el espacio del archivador al crear un objeto de esa clase.
 	@Test 
 	public void almacenarCorreoTest_EspacioVacio() {
+		
 		ArchivadorSimple archivadorSimplePrueba = new ArchivadorSimple(nombreArchivador, 0);
 			
 		Mensaje correo = new Mensaje(new Texto("TextoPrueba", "Texto de prueba"));
 				
 		assertFalse(archivadorSimplePrueba.almacenarCorreo(correo));
+		
 	}
 }

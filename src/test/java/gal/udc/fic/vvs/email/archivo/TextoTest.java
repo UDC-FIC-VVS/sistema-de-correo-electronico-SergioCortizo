@@ -4,10 +4,6 @@ import static org.junit.Assert.assertEquals;
 
 import org.junit.Test;
 
-import etm.core.configuration.EtmManager;
-import etm.core.monitor.EtmMonitor;
-import etm.core.monitor.EtmPoint;
-
 /**
  * Clase para probar de forma manual los métodos de la clase {@link Texto}.
  * 
@@ -15,7 +11,6 @@ import etm.core.monitor.EtmPoint;
  */
 public class TextoTest {
 	
-	private static EtmMonitor monitor = EtmManager.getEtmMonitor();
 	
 	/**
 	 * Test para comprobar que el método obtenerNombre() funciona como se espera.
@@ -30,13 +25,11 @@ public class TextoTest {
 	 */
 	@Test
 	public void obtenerNombreTest() {
-		EtmPoint point = monitor.createPoint("Texto:obtenerNombreTest");
  
 		Texto textoATestear = new Texto("", "");
 		
 		assertEquals("", textoATestear.obtenerNombre());
 		
-		point.collect();
 	}
 	
 	/**
@@ -52,12 +45,10 @@ public class TextoTest {
 	 */
 	@Test
 	public void obtenerContenidoTest() {
-		EtmPoint point = monitor.createPoint("Texto:obtenerContenidoTest");
 		
 		Texto textoATestear = new Texto("", "");
 		
 		assertEquals("", textoATestear.obtenerContenido());
 		
-		point.collect();
 	}
 }

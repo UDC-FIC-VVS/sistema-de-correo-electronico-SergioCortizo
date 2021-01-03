@@ -8,9 +8,6 @@ import com.pholser.junit.quickcheck.From;
 import com.pholser.junit.quickcheck.Property;
 import com.pholser.junit.quickcheck.runner.JUnitQuickcheck;
 
-import etm.core.configuration.EtmManager;
-import etm.core.monitor.EtmMonitor;
-import etm.core.monitor.EtmPoint;
 import gal.udc.fic.vvs.util.MyCharacterGenerator;
 
 /**
@@ -20,7 +17,6 @@ import gal.udc.fic.vvs.util.MyCharacterGenerator;
  */
 @RunWith(JUnitQuickcheck.class)
 public class ImagenPBT {
-	private static EtmMonitor monitor = EtmManager.getEtmMonitor();
 	
 	/**
 	 * Test para comprobar que el método obtenerNombre() funciona como se espera.
@@ -41,13 +37,11 @@ public class ImagenPBT {
 	@Property
 	public void obtenerNombrePBT(@From(MyCharacterGenerator.class) String nombreImagen,
 			@From(MyCharacterGenerator.class) String contenidoImagen) {
-		EtmPoint point = monitor.createPoint("Imagen:obtenerNombrePBT");
 		
 		Imagen imagenATestear = new Imagen(nombreImagen, contenidoImagen);
 		
 		assertEquals(nombreImagen, imagenATestear.obtenerNombre());
 		
-		point.collect();
 	}
 	
 	/**
@@ -70,13 +64,11 @@ public class ImagenPBT {
 	@Property
 	public void obtenerContenidoPBT(@From(MyCharacterGenerator.class) String nombreImagen,
 			@From(MyCharacterGenerator.class) String contenidoImagen) {
-		EtmPoint point = monitor.createPoint("Imagen:obtenerContenidoPBT");
 		
 		Imagen imagenATestear = new Imagen(nombreImagen, contenidoImagen);
 		
 		assertEquals(contenidoImagen, imagenATestear.obtenerContenido());
 		
-		point.collect();
 	}
 	
 	/**
@@ -99,13 +91,11 @@ public class ImagenPBT {
 	@Property
 	public void obtenerTamañoPBT(@From(MyCharacterGenerator.class) String nombreImagen,
 			@From(MyCharacterGenerator.class) String contenidoImagen) {
-		EtmPoint point = monitor.createPoint("Imagen:obtenerTamañoPBT");
 		
 		Imagen imagenATestear = new Imagen(nombreImagen, contenidoImagen);
 		
 		assertEquals(contenidoImagen.length(), imagenATestear.obtenerTamaño());
 		
-		point.collect();
 	}
 	
 	/**
@@ -131,7 +121,6 @@ public class ImagenPBT {
 	@Property
 	public void obtenerPreVisualizacionPBT(@From(MyCharacterGenerator.class) String nombreImagen,
 			@From(MyCharacterGenerator.class) String contenidoImagen) {
-		EtmPoint point = monitor.createPoint("Imagen:obtenerPreVisualizacionPBT");
 		
 		Imagen imagenATestear = new Imagen(nombreImagen, contenidoImagen);
 
@@ -139,7 +128,5 @@ public class ImagenPBT {
 				nombreImagen + "(" + contenidoImagen.length() + " bytes, image/png)";
 		
 		assertEquals(previsualizacionImagen, imagenATestear.obtenerPreVisualizacion());
-		
-		point.collect();
 	}
 }
